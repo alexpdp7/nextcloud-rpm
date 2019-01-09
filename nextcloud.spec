@@ -1,6 +1,6 @@
 Name:           nextcloud
 Version:        10.0.4
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Private file sync and share server
 
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
@@ -75,7 +75,7 @@ BuildRequires:       php-cli
 BuildRequires:       php-composer(sabre/dav)  >= 3.0.9
 BuildRequires:       php-composer(sabre/dav)  < 4.0
 BuildRequires:       php-composer(doctrine/dbal) >= 2.5.4
-BuildRequires:       php-composer(doctrine/dbal) < 2.6
+BuildRequires:       php-composer(doctrine/dbal) < 3
 BuildRequires:       php-composer(mcnetic/zipstreamer) >= 1.0
 BuildRequires:       php-composer(mcnetic/zipstreamer) < 2.0
 BuildRequires:       php-composer(phpseclib/phpseclib) >= 2.0
@@ -109,8 +109,10 @@ BuildRequires:       php-composer(symfony/process) >= 2.8.1
 BuildRequires:       php-composer(symfony/process) < 3.0.0
 BuildRequires:       php-composer(pimple/pimple) >= 3.0.2
 BuildRequires:       php-composer(pimple/pimple) < 4.0
+%if 0%{?fedora} < 18 && 0%{?rhel} < 8
 BuildRequires:       php-composer(ircmaxell/password-compat) >= 1.0.0
 BuildRequires:       php-composer(ircmaxell/password-compat) < 2.0
+%endif
 BuildRequires:       php-composer(nikic/php-parser) >= 1.4.1
 BuildRequires:       php-composer(nikic/php-parser) < 2.0
 BuildRequires:       php-composer(icewind/streams) >= 0.4.1
@@ -145,7 +147,7 @@ BuildRequires:       php-composer(lukasreschke/id3parser) < 1.0.0
 BuildRequires:       php-composer(icewind/smb) >= 1.1.0
 BuildRequires:       php-composer(icewind/smb) < 2.0
 BuildRequires:       php-pecl(smbclient) >= 0.8.0
-BuildRequires:       php-pecl(smbclient) < 1.0
+BuildRequires:       php-pecl(smbclient) < 2
 BuildRequires:       php-composer(google/apiclient) >= 1.1.7
 # Note: 1.1.8 has BC breaks
 BuildRequires:       php-composer(google/apiclient) < 1.1.8
@@ -187,7 +189,7 @@ Requires:       php-filter
 # pulls in doctrine/common as a strict requires
 # which pulls in doctrine/{annotations,inflector,cache,collections,lexer} as strict requires
 Requires:       php-composer(doctrine/dbal) >= 2.5.4
-Requires:       php-composer(doctrine/dbal) < 2.6
+Requires:       php-composer(doctrine/dbal) < 3
 
 #"mcnetic/zipstreamer": "^1.0"
 Requires:       php-composer(mcnetic/zipstreamer) >= 1.0
@@ -250,9 +252,11 @@ Requires:       php-composer(symfony/process) < 3.0.0
 Requires:       php-composer(pimple/pimple) >= 3.0.2
 Requires:       php-composer(pimple/pimple) < 4.0
 
+%if 0%{?fedora} < 18 && 0%{?rhel} < 8
 # "ircmaxell/password-compat": "1.0.*"
 Requires:       php-composer(ircmaxell/password-compat) >= 1.0.0
 Requires:       php-composer(ircmaxell/password-compat) < 2.0
+%endif
 
 # "nikic/php-parser": "1.4.1"
 Requires:       php-composer(nikic/php-parser) >= 1.4.1
@@ -336,7 +340,7 @@ Requires:       php-composer(icewind/smb) < 2.0
 # This makes smb external storage usable in performance
 # and doesn't break things like encryption due to timeouts
 Requires:       php-pecl(smbclient) >= 0.8.0
-Requires:       php-pecl(smbclient) < 1.0
+Requires:       php-pecl(smbclient) < 2
 
 
 # Requiring so that the shipped external smb storage works
@@ -853,6 +857,11 @@ fi
 
 
 %changelog
+* Wed Jan  9 2019 Remi Collet <remi@remirepo.net> - 10.0.4-6
+- drop dependency on php-password-compat #1658730
+- allow php-smbclient 1.0.0 #1663672
+- allow doctrine/dbal 2.x
+
 * Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 10.0.4-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 

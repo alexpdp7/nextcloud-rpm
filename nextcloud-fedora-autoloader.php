@@ -47,7 +47,9 @@ require_once $vendor . '/Symfony/Component/Process/autoload.php';
 // "pimple/pimple"
 require_once $vendor . '/Pimple/autoload.php';
 // "ircmaxell/password-compat"
-require_once $vendor . '/password_compat/password.php';
+if (file_exists($vendor . '/password_compat/password.php')) {
+   require_once $vendor . '/password_compat/password.php';
+}
 // "nikic/php-parser"
 require_once $vendor . '/PhpParser/autoload.php';
 // "icewind/Streams"
