@@ -83,50 +83,10 @@ Requires:       php-pecl-memcached
 Requires:       php-pecl-apcu
 Requires:       php-pecl-redis5
 
-#TODO: missing ffmpeg php extension
 
 # Need to label the httpd rw stuff correctly until base selinux policy updated
 Requires(post):   %{_sbindir}/semanage
 Requires(postun): %{_sbindir}/semanage
-
-# Bundled javascript libraries in core vendor
-# State of javascript in fedora right now is too painful to unbundle
-#Provides: bundled(js-base64) = 0.3.0
-#Provides: bundled(js-blueimp-md5) = 1.1.0
-#Provides: bundled(js-bootstrap/tooltip) = 3.3.6
-#Provides: bundled(js-clipboard) = 1.5.12
-#Provides: bundled(js-davclient)
-#Provides: bundled(js-es6-promise) = 2.3.0
-#Provides: bundled(js-handlebars) = 1.3.0
-#Provides: bundled(js-jcrop) = 0.9.12
-#Provides: bundled(js-jquery-ui) = 1.10
-#Provides: bundled(js-jsTimezoneDetect) = 1.0.6
-#Provides: bundled(js-moment) = 2.10.3
-#Provides: bundled(js-select2) = 3.4.8
-#Provides: bundled(js-snapjs) = 2.0.0
-#Provides: bundled(js-strengthify) = 0.5.1
-#Provides: bundled(js-zxcvbn) = gitf2a8cda13d
-#Provides: bundled(js-jquery) = 2.1.4
-#Provides: bundled(js-jquery-migrate) = 1.4.0
-#Provides: bundled(js-backbone) = 1.2.3
-#Provides: bundled(js-underscore) = 1.8.3
-# bundled from files_pdfviewer
-#Provides: bundled(js-pdfjs) = 1.1.469
-# bundled from files_theming
-#Provides: bundled(js-jscolor) = 2.0.4
-# bundled from federatedfilesharing
-#Provides: bundled(js-gs-share)
-# bundled from files_texteditor
-#Provides: bundled(js-ace)
-# bundled from user_ldap
-#Provides: bundled(js-jquery-multiselect) = 1.13
-# bundled from gallery
-#Provides: bundled(js-bigshot)
-#Provides: bundled(js-commonmark) = 0.22.0
-#Provides: bundled(js-dompurify) = 0.7.0
-#Provides: bundled(js-eventsource-polyfill) = 0.9.7
-#Provides: bundled(js-jquery-touchevents) = 1.0.1
-#Provides: bundled(js-jqueryui-touch-punch) = 0.2.3
 
 %description
 NextCloud gives you universal access to your files through a web interface or
@@ -500,6 +460,9 @@ fi
 * Sat Feb 08 2020 Ivan Chavero <ichavero@redhat.com> - 18.0.0-1
 - Refactor spec file
 - Update to Nextcoud 18.0.0
+
+* Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 10.0.4-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
 * Thu Jul 25 2019 Fedora Release Engineering <releng@fedoraproject.org> - 10.0.4-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
