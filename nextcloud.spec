@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        18.0.0
+Version:        18.0.4
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 
@@ -457,6 +457,9 @@ fi
 
 
 %changelog
+* Thu Apr 30 2020 Ivan Chavero <ichavero@redhat.com> - 18.0.4-1
+- Update to Nextcloud 18.0.4
+
 * Sat Feb 08 2020 Ivan Chavero <ichavero@redhat.com> - 18.0.0-1
 - Refactor spec file
 - Update to Nextcoud 18.0.0
