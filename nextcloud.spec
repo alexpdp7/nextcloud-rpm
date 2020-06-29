@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        18.0.4
+Version:        19.0.0
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 
@@ -266,11 +266,30 @@ mv 3rdparty/guzzlehttp/ringphp/LICENSE guzzlehttp-LICENSE
 mv 3rdparty/guzzlehttp/psr7/LICENSE guzzlehttp-LICENSE
 mv 3rdparty/pear/pear_exception/LICENSE pear-LICENSE
 mv 3rdparty/pear/console_getopt/LICENSE pear-LICENSE
-mv 3rdparty/leafo/scssphp/LICENSE.md leafo-LICENSE
 mv 3rdparty/ralouphie/getallheaders/LICENSE ralouphie-LICENSE
 mv 3rdparty/psr/log/LICENSE psr-LICENSE
 mv 3rdparty/psr/http-message/LICENSE psr-LICENSE
 mv 3rdparty/psr/container/LICENSE psr-LICENSE
+mv 3rdparty/web-auth/cose-lib/LICENSE web-auth-LICENSE
+mv 3rdparty/web-auth/metadata-service/LICENSE web-auth-LICENSE
+mv 3rdparty/web-auth/webauthn-lib/LICENSE web-auth-LICENSE
+mv 3rdparty/spomky-labs/cbor-php/LICENSE spomky-labs-LICENSE
+mv 3rdparty/spomky-labs/base64url/LICENSE spomky-labs-LICENSE
+mv 3rdparty/php-http/promise/LICENSE php-http-LICENSE
+mv 3rdparty/php-http/httplug/LICENSE php-http-LICENSE
+mv 3rdparty/php-http/guzzle6-adapter/LICENSE php-http-LICENSE
+mv 3rdparty/scssphp/scssphp/LICENSE.md scssphp-LICENSE.md
+mv 3rdparty/fgrosse/phpasn1/LICENSE fgrosse-LICENSE
+mv 3rdparty/beberlei/assert/LICENSE beberlei-LICENSE
+mv 3rdparty/symfony/polyfill-ctype/LICENSE symfony-LICENSE
+mv 3rdparty/paragonie/random_compat/LICENSE paragonie-LICENSE
+mv 3rdparty/ramsey/uuid/LICENSE ramsey-LICENSE
+mv 3rdparty/league/uri-components/LICENSE league-LICENSE
+mv 3rdparty/league/uri/LICENSE league-LICENSE
+mv 3rdparty/league/uri-interfaces/LICENSE league-LICENSE
+mv 3rdparty/psr/http-factory/LICENSE psr-LICENSE
+mv 3rdparty/psr/http-client/LICENSE psr-LICENSE
+mv apps/contactsinteraction/composer/composer/LICENSE contactsinteraction-LICENSE
 mv apps/encryption/composer/composer/LICENSE encryption-LICENSE
 mv apps/federatedfilesharing/composer/composer/LICENSE federatedfilesharing-LICENSE
 mv apps/theming/js/3rdparty/jscolor/LICENSE.txt jscolor-LICENSE
@@ -457,6 +476,10 @@ fi
 
 
 %changelog
+* Sun Jun 28 2020 Ivan Chavero <ichavero@redhat.com> - 19.0.0-1
+- Update to Nextcloud 19.0.0
+- Update licenses
+
 * Thu Apr 30 2020 Ivan Chavero <ichavero@redhat.com> - 18.0.4-1
 - Update to Nextcloud 18.0.4
 
