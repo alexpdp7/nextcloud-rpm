@@ -1,0 +1,3 @@
+[submodule "nextcloud"]
+	path = nextcloud
+	url = https://src.fedoraproject.org/forks/koalillo/rpms/nextcloud.git
