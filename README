@@ -1,2 +1,12 @@
 $ ./build.sh (-ba|-bs)  # build all or just source
 $ ./push-to-copr.sh <COPR_LOGIN> koalillo <COPR_TOKEN> nextcloud
+
+INSTALL
+
+$ dnf install dnf-plugins-core
+$ dnf copr enable koalillo/nextcloud
+$ dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+$ dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+$ dnf module reset php
+$ dnf module enable php:remi-7.4
+$ dnf install nextcloud-(httpd|nginx) nextcloud-(sqlite|mysql|postgresql)
