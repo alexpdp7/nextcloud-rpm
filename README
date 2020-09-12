@@ -1,1 +1,2 @@
 $ ./build.sh (-ba|-bs)  # build all or just source
+$ ./push-to-copr.sh <COPR_LOGIN> koalillo <COPR_TOKEN> nextcloud
