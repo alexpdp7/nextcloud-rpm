@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        19.0.3
+Version:        20.0.0
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 
@@ -188,8 +188,8 @@ cp %{SOURCE5} README.postgresql
 cp %{SOURCE6} MIGRATION.fedora
 
 # Locate license files and put them sensibly in place
-mv apps/files_pdfviewer/vendor/pdfjs/LICENSE js-pdfjs-LICENSE
-mv apps/files_pdfviewer/vendor/pdfjs/web/cmaps/LICENSE js-pdfjs-cmaps-LICENSE
+mv apps/files_pdfviewer/js/pdfjs/LICENSE js-pdfjs-LICENSE
+mv apps/files_pdfviewer/js/pdfjs/web/cmaps/LICENSE js-pdfjs-cmaps-LICENSE
 mv apps/notifications/COPYING notifications-LICENSE
 mv apps/password_policy/LICENSE password_policy-LICENSE
 mv apps/serverinfo/COPYING serverinfo-LICENSE
@@ -201,6 +201,7 @@ mv COPYING nextcloud-LICENSE
 mv core/vendor/zxcvbn/LICENSE.txt zxcvbn-LICENSE
 mv core/fonts/LICENSE_OFL.txt fonts-LICENSE
 mv lib/composer/composer/LICENSE composer-LICENSE
+mv apps/user_status/composer/composer/LICENSE composer-LICENSE
 mv 3rdparty/sabre/vobject/LICENSE sabre-LICENSE
 mv 3rdparty/sabre/dav/LICENSE sabre-LICENSE
 mv 3rdparty/sabre/dav/lib/DAV/Browser/assets/openiconic/ICON-LICENSE sabre-ICON-LICENSE
@@ -246,6 +247,7 @@ mv 3rdparty/symfony/polyfill-php73/LICENSE symfony-LICENSE
 mv 3rdparty/symfony/translation-contracts/LICENSE symfony-LICENSE
 mv 3rdparty/symfony/service-contracts/LICENSE symfony-LICENSE
 mv 3rdparty/symfony/polyfill-util/LICENSE symfony-LICENSE
+mv 3rdparty/symfony/polyfill-php80/LICENSE symfony-LICENSE
 mv 3rdparty/react/promise/LICENSE react-LICENSE
 mv 3rdparty/composer/LICENSE composer-LICENSE
 mv 3rdparty/icewind/searchdav/LICENSE icewind-LICENSE
@@ -333,7 +335,7 @@ mv apps/text/COPYING text-COPYING
 nb=$( find . -mindepth 2 \( -name '*LICENSE*' -o -name '*LICENCE*' -o  -name '*COPYING*' \) | wc -l )
 if [ $nb -gt 0 ]
   then
-  false found unexpected licenses to verify
+  false found unexpected licenses to verify $( find . -mindepth 2 \( -name '*LICENSE*' -o -name '*LICENCE*' -o  -name '*COPYING*' \) )
 fi
 
 
@@ -476,6 +478,9 @@ fi
 
 
 %changelog
+* Sun Oct 04 2020 Alex Corcoles <alex@corcoles.net> - 20.0.0-1
+- Update to Nextcloud 20.0.0
+
 * Sat Sep 12 2020 Alex Corcoles <alex@corcoles.net> - 19.0.3-1
 - Update to Nextcloud 19.0.3
 
