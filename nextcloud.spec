@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        20.0.0
+Version:        20.0.1
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 
@@ -478,6 +478,9 @@ fi
 
 
 %changelog
+* Sat Oct 24 2020 Alex Corcoles <alex@corcoles.net> - 20.0.1-1
+- Update to Nextcloud 20.0.1
+
 * Sun Oct 04 2020 Alex Corcoles <alex@corcoles.net> - 20.0.0-1
 - Update to Nextcloud 20.0.0
 
