@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        20.0.0
+Version:        20.0.1
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 
@@ -476,6 +476,9 @@ fi
 
 
 %changelog
+* Mon Oct 26 2020 Christopher Engelhard <ce@lcts.de> - 20.0.1-1
+- Update to Nextcloud 20.0.1
+
 * Sun Oct 11 2020 Christopher Engelhard <ce@lcts.de> - 20.0.0-1
 - Update to Nextcloud 20.0.0
 
