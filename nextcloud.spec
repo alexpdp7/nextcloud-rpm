@@ -78,6 +78,7 @@ Requires:       php-ldap
 Requires:       php-smbclient
 Requires:       php-imap
 Requires:       php-gmp
+Requires:       php-process
 Requires:       php-pecl-imagick
 Requires:       php-pecl-memcached
 Requires:       php-pecl-apcu
