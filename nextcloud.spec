@@ -37,6 +37,10 @@ Source8:        %{name}-fedora-autoloader.php
 Source10:       %{name}-systemd-timer.service
 Source11:       %{name}-systemd-timer.timer
 
+# Remove updater version check, we know that updates across more than one
+# version are possible
+Patch00:        0000-disable-update-version-check.patch
+
 BuildArch:      noarch
 
 # For the systemd macros
