@@ -39,8 +39,6 @@ BuildArch:      noarch
 BuildRequires:  systemd
 # expand pear macros on install
 BuildRequires:  php-pear
-# For sanity %%check
-BuildRequires:  php-cli
 
 # Require one webserver and database backend
 Requires:       %{name}-webserver = %{version}-%{release}
