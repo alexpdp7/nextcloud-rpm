@@ -57,6 +57,8 @@ BuildRequires:       php-cli
 Requires:       %{name}-webserver = %{version}-%{release}
 Requires:       %{name}-database = %{version}-%{release}
 
+# Require php CLI for occ command
+Requires:       php-cli
 # Core PHP libs/extensions required by OC core
 Requires:       php-curl
 Requires:       php-dom
