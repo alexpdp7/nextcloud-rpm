@@ -1,0 +1,20 @@
+diff -Naur a/lib/private/Updater.php b/lib/private/Updater.php
+--- a/lib/private/Updater.php	2020-10-24 10:37:44.000000000 +0200
++++ b/lib/private/Updater.php	2020-11-10 10:51:10.511861549 +0100
+@@ -197,14 +197,11 @@
+ 		}
+ 
+ 		if ($currentVendor === 'nextcloud') {
+-			return isset($allowedPreviousVersions[$currentVendor][$majorMinor])
+-				&& (version_compare($oldVersion, $newVersion, '<=') ||
+-					$this->config->getSystemValue('debug', false));
++			return true;
+ 		}
+ 
+ 		// Check if the instance can be migrated
+-		return isset($allowedPreviousVersions[$currentVendor][$majorMinor]) ||
+-			isset($allowedPreviousVersions[$currentVendor][$oldVersion]);
++		return true;
+ 	}
+ 
+ 	/**
