@@ -33,6 +33,8 @@ Source303:      %{name}-MIGRATION.fedora
 # Remove updater version check, we know that updates across more than one
 # version are possible
 Patch0:         0000-disable-update-version-check.patch
+# Change occ shebang to /usr/bin/php
+Patch1:         0001-mangle-shebang.patch
 
 BuildArch:      noarch
 # For the systemd macros
@@ -339,9 +341,12 @@ for d in $(find . -mindepth 1 -maxdepth 1 -type d | grep -v config); do
     cp -a "$d" %{buildroot}%{_datadir}/%{name}
 done
 
-for f in {*.php,*.html,occ,robots.txt}; do
+for f in {*.php,*.html,robots.txt}; do
     install -pm 644 "$f" %{buildroot}%{_datadir}/%{name}
 done
+
+# occ should be executable
+install -pm 755 occ %{buildroot}%{_datadir}/%{name}
 
 # symlink config dir
 ln -sf %{_sysconfdir}/%{name} %{buildroot}%{_datadir}/%{name}/config
