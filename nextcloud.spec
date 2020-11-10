@@ -355,7 +355,9 @@ install -pm 644 %{SOURCE1}    %{buildroot}%{_sysconfdir}/%{name}/config.php
 # httpd config
 install -Dpm 644 %{SOURCE100} \
     %{buildroot}%{_sysconfdir}/httpd/conf.d/%{name}.conf
-install -Dpm 644 %{SOURCE101} %{SOURCE102} %{SOURCE103} %{SOURCE104} %{SOURCE105} \
+install -Dpm 644 %{SOURCE101} \
+    %{buildroot}%{_sysconfdir}/httpd/conf.d/%{name}-access.conf.avail
+install -Dpm 644 %{SOURCE102} %{SOURCE103} %{SOURCE104} %{SOURCE105} \
     %{buildroot}%{_sysconfdir}/httpd/conf.d/
 
 # nginx config
