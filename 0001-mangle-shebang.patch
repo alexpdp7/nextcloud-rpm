@@ -1,0 +1,9 @@
+diff -Naur a/occ b/occ
+--- a/occ	2020-10-24 10:37:44.000000000 +0200
++++ b/occ	2020-11-10 19:39:56.523178958 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env php
++#!/usr/bin/php
+ <?php
+ /**
+  * Copyright (c) 2013 Thomas Müller <thomas.mueller@tmit.eu>
