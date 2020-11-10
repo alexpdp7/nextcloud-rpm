@@ -2,61 +2,49 @@ Name:           nextcloud
 Version:        20.0.1
 Release:        1%{?dist}
 Summary:        Private file sync and share server
-
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
 URL:            http://nextcloud.com
-
 Source0:        https://download.nextcloud.com/server/releases/%{name}-%{version}.tar.bz2
 
-Source1:        %{name}-httpd.conf
-Source2:        %{name}-access-httpd.conf.avail
-
-Source200:        %{name}-default-nginx.conf
-Source201:        %{name}-conf-nginx.conf
-Source202:        %{name}-php-fpm.conf
-Source203:        %{name}-el7-php-fpm.conf
-
-# Config snippets
-Source100:      %{name}-auth-any.inc
-Source101:      %{name}-auth-local.inc
-Source102:      %{name}-auth-none.inc
-Source103:      %{name}-defaults.inc
-# packaging notes and doc
-Source3:        %{name}-README.fedora
-Source4:        %{name}-mysql.txt
-Source5:        %{name}-postgresql.txt
-Source6:        %{name}-MIGRATION.fedora
-# config.php containing just settings we want to specify, nextcloud's
+# basic nextcloud config.php, nextcloud's
 # initial setup will fill out other settings appropriately
-Source7:        %{name}-config.php
-
-# Our autoloader for core
-Source8:        %{name}-fedora-autoloader.php
-
+Source1:        %{name}-config.php
 # Systemd timer for background jobs
-Source10:       %{name}-systemd-timer.service
-Source11:       %{name}-systemd-timer.timer
+Source2:       %{name}-systemd-timer.service
+Source3:       %{name}-systemd-timer.timer
+# httpd config files
+Source100:      %{name}-httpd.conf
+Source101:      %{name}-access-httpd.conf.avail
+Source102:      %{name}-auth-any.inc
+Source103:      %{name}-auth-local.inc
+Source104:      %{name}-auth-none.inc
+Source105:      %{name}-defaults.inc
+# nginx/php-fpm  config files
+Source200:      %{name}-default-nginx.conf
+Source201:      %{name}-conf-nginx.conf
+Source202:      %{name}-php-fpm.conf
+Source203:      %{name}-el7-php-fpm.conf
+# packaging notes and doc
+Source300:      %{name}-README.fedora
+Source301:      %{name}-mysql.txt
+Source302:      %{name}-postgresql.txt
+Source303:      %{name}-MIGRATION.fedora
 
 # Remove updater version check, we know that updates across more than one
 # version are possible
-Patch00:        0000-disable-update-version-check.patch
+Patch0:         0000-disable-update-version-check.patch
 
 BuildArch:      noarch
-
 # For the systemd macros
-%{?systemd_requires}
 BuildRequires:  systemd
-
 # expand pear macros on install
 BuildRequires:  php-pear
-
 # For sanity %%check
-BuildRequires:       php-cli
+BuildRequires:  php-cli
 
-
+# Require one webserver and database backend
 Requires:       %{name}-webserver = %{version}-%{release}
 Requires:       %{name}-database = %{version}-%{release}
-
 # Require php CLI for occ command
 Requires:       php-cli
 # Core PHP libs/extensions required by OC core
@@ -89,11 +77,12 @@ Requires:       php-pecl-imagick
 Requires:       php-pecl-memcached
 Requires:       php-pecl-apcu
 Requires:       php-pecl-redis5
-
-
 # Need to label the httpd rw stuff correctly until base selinux policy updated
 Requires(post):   %{_sbindir}/semanage
 Requires(postun): %{_sbindir}/semanage
+# For systemd support during install/uninstall
+%{?systemd_requires}
+
 
 %description
 NextCloud gives you universal access to your files through a web interface or
@@ -104,11 +93,9 @@ applications and plugins.
 
 
 %package httpd
-Summary:    Httpd integration for NextCloud
-
-Provides:   %{name}-webserver = %{version}-%{release}
-Requires:   %{name} = %{version}-%{release}
-
+Summary:        Httpd integration for NextCloud
+Provides:       %{name}-webserver = %{version}-%{release}
+Requires:       %{name} = %{version}-%{release}
 # PHP dependencies
 Requires:       php
 
@@ -118,10 +105,8 @@ Requires:       php
 
 %package nginx
 Summary:    Nginx integration for NextCloud
-
 Provides:   %{name}-webserver = %{version}-%{release}
 Requires:   %{name} = %{version}-%{release}
-
 # PHP dependencies
 Requires:   php-fpm nginx
 
@@ -131,10 +116,8 @@ Requires:   php-fpm nginx
 
 %package mysql
 Summary:    MySQL database support for NextCloud
-
 Provides:   %{name}-database = %{version}-%{release}
 Requires:   %{name} = %{version}-%{release}
-
 # From getSupportedDatabases, mysql => pdo, mysql
 Requires:   php-mysqlnd
 
@@ -150,10 +133,8 @@ more details.
 
 %package postgresql
 Summary:    PostgreSQL database support for NextCloud
-
 Provides:   %{name}-database = %{version}-%{release}
 Requires:   %{name} = %{version}-%{release}
-
 # From getSupportedDatabases, pgsql => function, pg_connect
 Requires:   php-pgsql
 
@@ -170,11 +151,9 @@ for more details.
 
 %package sqlite
 Summary:    SQLite 3 database support for NextCloud
-
 Provides:   %{name}-database = %{version}-%{release}
 Requires:   %{name} = %{version}-%{release}
 # From getSupportedDatabases, pgsql => class, SQLite3
-
 %description sqlite
 This package ensures the necessary dependencies are in place for NextCloud to
 work with an SQLite 3 database stored on the local system.
@@ -189,10 +168,10 @@ find . -name .gitignore -type f        -exec rm    {} \; -print
 find . -name .github    -type d -prune -exec rm -r {} \; -print
 
 # prepare package doc
-cp %{SOURCE3} README.fedora
-cp %{SOURCE4} README.mysql
-cp %{SOURCE5} README.postgresql
-cp %{SOURCE6} MIGRATION.fedora
+cp %{SOURCE300} README.fedora
+cp %{SOURCE301} README.mysql
+cp %{SOURCE302} README.postgresql
+cp %{SOURCE303} MIGRATION.fedora
 
 # Locate license files and put them sensibly in place
 # find all using "find -name '*LICENSE*' -o -name '*COPYING*' | sort"
@@ -373,14 +352,12 @@ ln -sf %{_sysconfdir}/%{name} %{buildroot}%{_datadir}/%{name}/config
 ln -sf %{_sysconfdir}/pki/tls/certs/ca-bundle.crt %{buildroot}%{_sysconfdir}/%{name}/ca-bundle.crt
 
 # set default config
-install -pm 644 %{SOURCE7}    %{buildroot}%{_sysconfdir}/%{name}/config.php
+install -pm 644 %{SOURCE1}    %{buildroot}%{_sysconfdir}/%{name}/config.php
 
 # httpd config
-install -Dpm 644 %{SOURCE1} \
+install -Dpm 644 %{SOURCE100} \
     %{buildroot}%{_sysconfdir}/httpd/conf.d/%{name}.conf
-install -Dpm 644 %{SOURCE2} \
-    %{buildroot}%{_sysconfdir}/httpd/conf.d/%{name}-access.conf.avail
-install -Dpm 644 %{SOURCE100} %{SOURCE101} %{SOURCE102} %{SOURCE103} \
+install -Dpm 644 %{SOURCE101} %{SOURCE102} %{SOURCE103} %{SOURCE104} %{SOURCE105} \
     %{buildroot}%{_sysconfdir}/httpd/conf.d/
 
 # nginx config
@@ -388,7 +365,6 @@ install -Dpm 644 %{SOURCE200} \
     %{buildroot}%{_sysconfdir}/nginx/default.d/%{name}.conf
 install -Dpm 644 %{SOURCE201} \
     %{buildroot}%{_sysconfdir}/nginx/conf.d/%{name}.conf
-
 %if 0%{?el7}
 install -Dpm 644 %{SOURCE203} \
     %{buildroot}%{_sysconfdir}/php-fpm.d/%{name}.conf
@@ -398,8 +374,8 @@ install -Dpm 644 %{SOURCE202} \
 %endif
 
 # Install the systemd timer
-install -Dpm 644 %{SOURCE10} %{buildroot}%{_unitdir}/nextcloud-cron.service
-install -Dpm 644 %{SOURCE11} %{buildroot}%{_unitdir}/nextcloud-cron.timer
+install -Dpm 644 %{SOURCE2} %{buildroot}%{_unitdir}/nextcloud-cron.service
+install -Dpm 644 %{SOURCE3} %{buildroot}%{_unitdir}/nextcloud-cron.timer
 
 %post httpd
 /usr/bin/systemctl reload httpd.service > /dev/null 2>&1 || :
@@ -447,28 +423,24 @@ fi
 
 %files
 %doc AUTHORS README.fedora MIGRATION.fedora config/config.sample.php
-
 %license *-LICENSE
-
 %dir %attr(-,apache,apache) %{_sysconfdir}/%{name}
 # contains sensitive data (dbpassword, passwordsalt)
 %config(noreplace) %attr(0600,apache,apache) %{_sysconfdir}/%{name}/config.php
 # need the symlink in confdir but it's not config
 %{_sysconfdir}/%{name}/ca-bundle.crt
-
 %{_datadir}/%{name}
 %dir %attr(0755,apache,apache) %{_localstatedir}/lib/%{name}
 # user data must not be world readable
 %dir %attr(0750,apache,apache) %{_localstatedir}/lib/%{name}/data
 %attr(-,apache,apache) %{_localstatedir}/lib/%{name}/apps
-
 %{_unitdir}/nextcloud-cron.service
 %{_unitdir}/nextcloud-cron.timer
 
 %files httpd
 %config(noreplace) %{_sysconfdir}/httpd/conf.d/%{name}.conf
 %{_sysconfdir}/httpd/conf.d/%{name}-access.conf.avail
-%{_sysconfdir}/httpd/conf.d/*.inc
+%{_sysconfdir}/httpd/conf.d/%{name}*.inc
 
 %files nginx
 %config(noreplace) %{_sysconfdir}/nginx/default.d/%{name}.conf
