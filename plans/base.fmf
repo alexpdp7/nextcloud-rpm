@@ -1,0 +1,11 @@
+summary: Basic occ functionality
+discover:
+    how: fmf
+    repository: https://src.fedoraproject.org/tests/nextcloud
+prepare:
+    how: install
+    package: nextcloud
+environment:
+    PACKAGES: nextcloud
+execute:
+    how: tmt
