@@ -23,7 +23,6 @@ Source105:      %{name}-defaults.inc
 Source200:      %{name}-default-nginx.conf
 Source201:      %{name}-conf-nginx.conf
 Source202:      %{name}-php-fpm.conf
-Source203:      %{name}-el7-php-fpm.conf
 # packaging notes and doc
 Source300:      %{name}-README.fedora
 Source301:      %{name}-mysql.txt
@@ -38,7 +37,11 @@ Patch1:         0001-mangle-shebang.patch
 
 BuildArch:      noarch
 # For the systemd macros
+%if 0%{?fedora} > 29
+BuildRequires:  systemd-rpm-macros
+%else
 BuildRequires:  systemd
+%endif
 # expand pear macros on install
 BuildRequires:  php-pear
 
@@ -370,13 +373,8 @@ install -Dpm 644 %{SOURCE200} \
     %{buildroot}%{_sysconfdir}/nginx/default.d/%{name}.conf
 install -Dpm 644 %{SOURCE201} \
     %{buildroot}%{_sysconfdir}/nginx/conf.d/%{name}.conf
-%if 0%{?el7}
-install -Dpm 644 %{SOURCE203} \
-    %{buildroot}%{_sysconfdir}/php-fpm.d/%{name}.conf
-%else
 install -Dpm 644 %{SOURCE202} \
     %{buildroot}%{_sysconfdir}/php-fpm.d/%{name}.conf
-%endif
 
 # Install the systemd timer
 install -Dpm 644 %{SOURCE2} %{buildroot}%{_unitdir}/nextcloud-cron.service
@@ -391,16 +389,8 @@ if [ $1 -eq 0 ]; then
 fi
 
 %post nginx
-%if 0%{?el7}
-  # Work around missing php session directory for php-fpm in el7 bz#1338444
-  if [ ! -d /var/lib/php/session ]
-    then
-    mkdir /var/lib/php/session
-  fi
-  /usr/bin/chown apache /var/lib/php/session
-%endif
-  /usr/bin/systemctl reload nginx.service > /dev/null 2>&1 || :
-  /usr/bin/systemctl reload php-fpm.service > /dev/null 2>&1 || :
+/usr/bin/systemctl reload nginx.service > /dev/null 2>&1 || :
+/usr/bin/systemctl reload php-fpm.service > /dev/null 2>&1 || :
 
 %postun nginx
 if [ $1 -eq 0 ]; then
