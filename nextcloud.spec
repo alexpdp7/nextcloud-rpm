@@ -1,6 +1,6 @@
 Name:           nextcloud
 Version:        20.0.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
 URL:            http://nextcloud.com
@@ -450,6 +450,9 @@ fi
 
 
 %changelog
+* Wed Nov 11 2020 Christopher Engelhard <ce@lcts.de> - 20.0.1-3
+- Remove CentOS/RHEL 7 support from spec file
+
 * Tue Nov 10 2020 Christopher Engelhard <ce@lcts.de> - 20.0.1-2
 - Add dependencies on php-cli (for occ) and php-process (for posix)
 - Remove unneeded BR on php-cli
