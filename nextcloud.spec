@@ -1,10 +1,10 @@
 Name:           nextcloud
-Version:        20.0.1
-Release:        1%{?dist}
+Version:        20.0.2
+Release:        0.1.rc1%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
 URL:            http://nextcloud.com
-Source0:        https://download.nextcloud.com/server/releases/%{name}-%{version}.tar.bz2
+Source0:        https://download.nextcloud.com/server/prereleases/%{name}-%{version}RC1.tar.bz2
 
 # basic nextcloud config.php, nextcloud's
 # initial setup will fill out other settings appropriately
@@ -450,6 +450,13 @@ fi
 
 
 %changelog
+* Sat Nov 14 2020 Christopher Engelhard <ce@lcts.de> - 20.0.2-0.1.rc1
+- Update to 20.0.2RC1
+- Remove CentOS/RHEL 7 support from spec file
+- Add dependencies on php-cli (for occ) and php-process (for posix)
+- Remove unneeded BR on php-cli
+- Add patch to allow updates across more than one major version
+
 * Sat Oct 24 2020 Alex Corcoles <alex@corcoles.net> - 20.0.1-1
 - Update to Nextcloud 20.0.1
 
