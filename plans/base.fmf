@@ -7,5 +7,6 @@ prepare:
     package: nextcloud
 environment:
     PACKAGES: nextcloud
+    VERSION: 20.0.2 RC1
 execute:
     how: tmt
