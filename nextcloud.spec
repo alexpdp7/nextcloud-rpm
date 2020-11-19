@@ -1,10 +1,10 @@
 Name:           nextcloud
 Version:        20.0.2
-Release:        0.1.rc1%{?dist}
+Release:        1%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
 URL:            http://nextcloud.com
-Source0:        https://download.nextcloud.com/server/prereleases/%{name}-%{version}RC1.tar.bz2
+Source0:        https://download.nextcloud.com/server/releases/%{name}-%{version}.tar.bz2
 
 # basic nextcloud config.php, nextcloud's
 # initial setup will fill out other settings appropriately
@@ -450,6 +450,9 @@ fi
 
 
 %changelog
+* Thu Nov 19 2020 Christopher Engelhard <ce@lcts.de> - 20.0.2-1
+- Update to 20.0.2
+
 * Sat Nov 14 2020 Christopher Engelhard <ce@lcts.de> - 20.0.2-0.1.rc1
 - Update to 20.0.2RC1
 
