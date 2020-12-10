@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        20.0.2
+Version:        20.0.3
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
@@ -202,7 +202,6 @@ mv 3rdparty/guzzlehttp/psr7/LICENSE guzzlehttp-LICENSE
 mv 3rdparty/guzzlehttp/ringphp/LICENSE guzzlehttp-LICENSE
 mv 3rdparty/guzzlehttp/streams/LICENSE guzzlehttp-LICENSE
 mv 3rdparty/icewind/searchdav/LICENSE icewind-LICENSE
-mv 3rdparty/interfasys/lognormalizer/COPYING interfasys-COPYING
 mv 3rdparty/jeremeamia/SuperClosure/LICENSE.md jeremeamia-LICENSE
 mv 3rdparty/justinrainbow/json-schema/LICENSE justinrainbow-LICENSE
 mv 3rdparty/league/flysystem/LICENSE league-LICENSE
@@ -213,6 +212,7 @@ mv '3rdparty/LICENSE INFO' 3rdparty-LICENSE_INFO
 mv 3rdparty/microsoft/azure-storage-blob/LICENSE microsoft-LICENSE
 mv 3rdparty/microsoft/azure-storage-common/LICENSE microsoft-LICENSE
 mv 3rdparty/mtdowling/jmespath.php/LICENSE mtdowling-LICENSE
+mv 3rdparty/nextcloud/lognormalizer/COPYING lognormalizer-LICENSE
 mv 3rdparty/nikic/php-parser/LICENSE nikic-LICENSE
 mv 3rdparty/paragonie/random_compat/LICENSE paragonie-LICENSE
 mv 3rdparty/patchwork/jsqueeze/LICENSE.ASL20 patchwork-LICENSE-APACHE
@@ -450,6 +450,9 @@ fi
 
 
 %changelog
+* Thu Dec 10 2020 Christopher Engelhard <ce@lcts.de> - 20.0.3-1
+- Update to 20.0.3
+
 * Thu Nov 19 2020 Christopher Engelhard <ce@lcts.de> - 20.0.2-1
 - Update to 20.0.2
 
