@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        20.0.3
+Version:        20.0.4
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
@@ -450,6 +450,9 @@ fi
 
 
 %changelog
+* Thu Dec 17 2020 Christopher Engelhard <ce@lcts.de> - 20.0.4-1
+- Update to 20.0.4
+
 * Thu Dec 10 2020 Christopher Engelhard <ce@lcts.de> - 20.0.3-1
 - Update to 20.0.3
 
