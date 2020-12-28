@@ -69,8 +69,6 @@ Requires:       php-xmlwriter
 Requires:       php-spl
 Requires:       php-zip
 Requires:       php-filter
-Requires:       php-mysqlnd
-Requires:       php-pgsql
 Requires:       php-ldap
 Requires:       php-smbclient
 Requires:       php-imap
@@ -80,9 +78,6 @@ Requires:       php-pecl-imagick
 Requires:       php-pecl-memcached
 Requires:       php-pecl-apcu
 Requires:       php-pecl-redis5
-# Need to label the httpd rw stuff correctly until base selinux policy updated
-Requires(post):   %{_sbindir}/semanage
-Requires(postun): %{_sbindir}/semanage
 # For systemd support during install/uninstall
 %{?systemd_requires}
 
@@ -396,24 +391,6 @@ fi
 if [ $1 -eq 0 ]; then
   /usr/bin/systemctl reload nginx.service > /dev/null 2>&1 || :
   /usr/bin/systemctl reload php-fpm.service > /dev/null 2>&1 || :
-fi
-
-# the selinux policies only cover owncloud right now
-# once this package is accepted pull request for selinux-policy to add
-# these will be made
-%post
-touch '%{_sysconfdir}/%{name}/CAN_INSTALL'
-semanage fcontext -a -t httpd_sys_rw_content_t '%{_sysconfdir}/%{name}/config.php' 2>/dev/null || :
-semanage fcontext -a -t httpd_sys_rw_content_t '%{_sysconfdir}/%{name}' 2>/dev/null || :
-semanage fcontext -a -t httpd_sys_rw_content_t '%{_localstatedir}/lib/%{name}(/.*)?' 2>/dev/null || :
-restorecon -R %{_sysconfdir}/%{name} || :
-restorecon -R %{_localstatedir}/lib/%{name} || :
-
-%postun
-if [ $1 -eq 0  ] ; then
-semanage fcontext -d -t httpd_sys_rw_content_t '%{_sysconfdir}/%{name}/config.php' 2>/dev/null || :
-semanage fcontext -d -t httpd_sys_rw_content_t '%{_sysconfdir}/%{name}' 2>/dev/null || :
-semanage fcontext -d -t httpd_sys_rw_content_t '%{_localstatedir}/lib/%{name}(/.*)?' 2>/dev/null || :
 fi
 
 %files
