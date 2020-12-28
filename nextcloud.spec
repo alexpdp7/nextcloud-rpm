@@ -81,6 +81,108 @@ Requires:       php-pecl-redis5
 # For systemd support during install/uninstall
 %{?systemd_requires}
 
+# Bundled composer libraries
+# many of these can be unbundled
+Provides: bundled(php-composer(icewind/smb)) = 3.2.7
+Provides: bundled(php-composer(icewind/streams)) = 0.7.1
+Provides: bundled(php-composer(aws/aws-sdk-php)) = 3.133.27
+Provides: bundled(php-composer(bantu/ini-get-wrapper)) = 1.0.1
+Provides: bundled(php-composer(beberlei/assert)) = 3.2.7
+Provides: bundled(php-composer(christophwurst/id3parser)) = 0.1.1
+Provides: bundled(php-composer(deepdiver/zipstreamer)) = 1.1.1
+Provides: bundled(php-composer(deepdiver1975/tarstreamer)) = 2.0.0
+Provides: bundled(php-composer(doctrine/annotations)) = 1.6.0
+Provides: bundled(php-composer(doctrine/cache)) = 1.10.1
+Provides: bundled(php-composer(doctrine/collections)) = 1.5.0
+Provides: bundled(php-composer(doctrine/common)) = 2.10.0
+Provides: bundled(php-composer(doctrine/dbal)) = 2.10.2
+Provides: bundled(php-composer(doctrine/event-manager)) = 1.1.0
+Provides: bundled(php-composer(doctrine/inflector)) = 1.3.0
+Provides: bundled(php-composer(doctrine/lexer)) = 1.2.0
+Provides: bundled(php-composer(doctrine/persistence)) = 1.1.0
+Provides: bundled(php-composer(doctrine/reflection)) = 1.0.0
+Provides: bundled(php-composer(egulias/email-validator)) = 2.1.11
+Provides: bundled(php-composer(fgrosse/phpasn1)) = 2.1.1
+Provides: bundled(php-composer(guzzlehttp/guzzle)) = 6.5.2
+Provides: bundled(php-composer(guzzlehttp/promises)) = 1.3.1
+Provides: bundled(php-composer(guzzlehttp/psr7)) = 1.6.1
+Provides: bundled(php-composer(guzzlehttp/ringphp)) = 1.1.0
+Provides: bundled(php-composer(guzzlehttp/streams)) = 3.0.0
+Provides: bundled(php-composer(icewind/searchdav)) = 2.0.0
+Provides: bundled(php-composer(icewind/streams)) = 0.7.1
+Provides: bundled(php-composer(jeremeamia/SuperClosure)) = 2.4.0
+Provides: bundled(php-composer(justinrainbow/json-schema)) = 5.2.9
+Provides: bundled(php-composer(league/flysystem)) = 1.0.64
+Provides: bundled(php-composer(league/uri)) = 6.2.1
+Provides: bundled(php-composer(league/uri-components)) = 2.2.1
+Provides: bundled(php-composer(league/uri-interfaces)) = 2.1.0
+Provides: bundled(php-composer(microsoft/azure-storage-blob)) = 1.5.0
+Provides: bundled(php-composer(microsoft/azure-storage-common)) = 1.4.1
+Provides: bundled(php-composer(mtdowling/jmespath.php)) = 2.5.0
+Provides: bundled(php-composer(nextcloud/lognormalizer)) = 1.0.0
+Provides: bundled(php-composer(nikic/php-parser)) = 4.3.0
+Provides: bundled(php-composer(paragonie/random_compat)) = 9.99.99
+Provides: bundled(php-composer(patchwork/jsqueeze)) = 2.0.5
+Provides: bundled(php-composer(patchwork/utf8)) = 1.3.1
+Provides: bundled(php-composer(pear/archive_tar)) = 1.4.11
+Provides: bundled(php-composer(pear/console_getopt)) = 1.4.3
+Provides: bundled(php-composer(pear/pear-core-minimal)) = 1.10.10
+Provides: bundled(php-composer(pear/pear_exception)) = 1.0.1
+Provides: bundled(php-composer(php-http/guzzle6-adapter)) = 2.0.1
+Provides: bundled(php-composer(php-http/httplug)) = 2.1.0
+Provides: bundled(php-composer(php-http/promise)) = 1.0.0
+Provides: bundled(php-composer(php-opencloud/openstack)) = 3.0.7
+Provides: bundled(php-composer(phpseclib/phpseclib)) = 2.0.25
+Provides: bundled(php-composer(pimple/pimple)) = 3.2.3
+Provides: bundled(php-composer(psr/container)) = 1.0.0
+Provides: bundled(php-composer(psr/http-client)) = 1.0.0
+Provides: bundled(php-composer(psr/http-factory)) = 1.0.1
+Provides: bundled(php-composer(psr/http-message)) = 1.0.1
+Provides: bundled(php-composer(psr/log)) = 1.1.0
+Provides: bundled(php-composer(punic/punic)) = 1.6.5
+Provides: bundled(php-composer(ralouphie/getallheaders)) = 3.0.3
+Provides: bundled(php-composer(ramsey/uuid)) = 3.9.3
+Provides: bundled(php-composer(react/promise)) = 2.2.1
+Provides: bundled(php-composer(sabre/dav)) = 4.0.3
+Provides: bundled(php-composer(sabre/event)) = 5.1.0
+Provides: bundled(php-composer(sabre/http)) = 5.1.0
+Provides: bundled(php-composer(sabre/uri)) = 2.2.0
+Provides: bundled(php-composer(sabre/vobject)) = 4.3.0
+Provides: bundled(php-composer(sabre/xml)) = 2.2.3
+Provides: bundled(php-composer(scssphp/scssphp)) = 1.0.3
+Provides: bundled(php-composer(spomky-labs/base64url)) = 2.0.1
+Provides: bundled(php-composer(spomky-labs/cbor-php)) = 1.0.8
+Provides: bundled(php-composer(stecman/symfony-console-completion)) = 0.11.0
+Provides: bundled(php-composer(swiftmailer/swiftmailer)) = 6.2.3
+Provides: bundled(php-composer(symfony/console)) = 4.4.10
+Provides: bundled(php-composer(symfony/event-dispatcher)) = 4.4.10
+Provides: bundled(php-composer(symfony/event-dispatcher-contracts)) = 1.1.7
+Provides: bundled(php-composer(symfony/polyfill-ctype)) = 1.15.0
+Provides: bundled(php-composer(symfony/polyfill-iconv)) = 1.12.0
+Provides: bundled(php-composer(symfony/polyfill-intl-idn)) = 1.12.0
+Provides: bundled(php-composer(symfony/polyfill-mbstring)) = 1.14.0
+Provides: bundled(php-composer(symfony/polyfill-php56)) = 1.10.0
+Provides: bundled(php-composer(symfony/polyfill-php72)) = 1.12.0
+Provides: bundled(php-composer(symfony/polyfill-php73)) = 1.13.1
+Provides: bundled(php-composer(symfony/polyfill-php80)) = 1.17.1
+Provides: bundled(php-composer(symfony/polyfill-util)) = 1.10.0
+Provides: bundled(php-composer(symfony/process)) = 4.4.10
+Provides: bundled(php-composer(symfony/routing)) = 4.4.10
+Provides: bundled(php-composer(symfony/service-contracts)) = 1.1.8
+Provides: bundled(php-composer(symfony/translation)) = 4.4.10
+Provides: bundled(php-composer(symfony/translation-contracts)) = 1.1.7
+Provides: bundled(php-composer(web-auth/cose-lib)) = 3.1.1
+Provides: bundled(php-composer(web-auth/metadata-service)) = 3.1.1
+Provides: bundled(php-composer(web-auth/webauthn-lib)) = 3.1.1
+
+# OpenIconic icons bundled via sabre-dav
+Provides: bundled(openiconic-fonts) = 1.0.0
+# jscolor bundled via themeing app
+Provides: bundled(jscolor) = 2.0.4
+# jquery-ui-multiselect bundled via user_ldap app
+Provides: bundled(jquery-ui-multiselect) = 0.3.1
+# zxcvbn bundled via core
+Provides: bundled(zxcvbn) = 4.4.2
 
 %description
 NextCloud gives you universal access to your files through a web interface or
