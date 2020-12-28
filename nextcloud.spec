@@ -1,6 +1,6 @@
 Name:           nextcloud
 Version:        20.0.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
 URL:            http://nextcloud.com
@@ -533,6 +533,12 @@ fi
 
 
 %changelog
+* Mon Dec 28 2020 Christopher Engelhard <ce@lcts.de> - 20.0.4-2
+- Remove duplicate dependencies on database drivers
+- Remove syslinux related stuff, as these are included in
+  the syslinux policy
+- Add Provides: for bundled libraries
+
 * Thu Dec 17 2020 Christopher Engelhard <ce@lcts.de> - 20.0.4-1
 - Update to 20.0.4
 
