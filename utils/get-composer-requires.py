@@ -6,6 +6,7 @@ import re
 import subprocess
 
 defaultconstraint = 2
+excludes = ('php')
 
 constraintmap = ('any', 'loose', 'strict', 'exact')
 
@@ -40,7 +41,8 @@ with open('3rdparty/composer.json') as f:
 #with open('apps/files_external/3rdparty/composer.json') as f:
     depdata = json.load(f)
     for name, version in depdata['require'].items():
-        if name == 'php':
+        if name in excludes:
+            print('Skipping ' + name + ': Excluded')
             continue
         print(name, version, ':')
         version = version.replace('v', '')
