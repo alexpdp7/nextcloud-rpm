@@ -4,79 +4,106 @@ import os
 import json
 import re
 import subprocess
+from colorama import Fore, Style
 
 defaultconstraint = 2
 excludes = ('php')
+basedir = '..'
+srcdir = os.path.join(basedir, 'nextcloud')
+outdir = basedir
+jsonfiles = ('3rdparty/composer.json', 'apps/files_external/3rdparty/composer.json')
 
 constraintmap = ('any', 'loose', 'strict', 'exact')
 
+def eval_version(version, constraint=3):
+    version = version.replace('v', '')
+    if version == '*':
+        constraint = 0
+        version = '0'
+    elif version.startswith('^'):
+        constraint = 1
+        version = version.strip('^')
+    elif version.startswith('~'):
+        constraint = 2
+        version = version.strip('~')
+
+    if re.search('[^.0-9]', version):
+        print('Unparseable version:', version)
+        version = '0.0.0'
+        constraint = 3
+
+    return version, constraint
+
 def get_requires(name, version, constraint):
-    version = version.split('.')
+    splitver = version.split('.')
 
     if constraint == 0:
         requires = 'php-composer(' + name + ')'
     elif constraint == 1:
         wipe = False
-        for i in range(0, len(version)):
-            if version[i] == '0' or wipe:
-                version[i] = '0'
+        for i in range(0, len(splitver)):
+            if splitver[i] == '0' or wipe:
+                splitver[i] = '0'
             else:
-                version[i] = str(int(version[i]) + 1)
+                splitver[i] = str(int(splitver[i]) + 1)
                 wipe = True
-            requires = '(php-composer(' + name + ') >= ' + minver + ' with php-composer(' + name + ') < ' + '.'.join(version) + ')'
+            requires = '(php-composer(' + name + ') >= ' + version + ' with php-composer(' + name + ') < ' + '.'.join(splitver) + ')'
     elif constraint == 2:
-        version[-1] = '0'
-        version[-2] = str(int(version[-2]) + 1)
-        requires = '(php-composer(' + name + ') >= ' + minver + ' with php-composer(' + name + ') < ' + '.'.join(version) + ')'
+        splitver[-1] = '0'
+        splitver[-2] = str(int(splitver[-2]) + 1)
+        requires = '(php-composer(' + name + ') >= ' + version + ' with php-composer(' + name + ') < ' + '.'.join(splitver) + ')'
     else:
-        requires = 'php-composer(' + name + ') = ' + minver
+        requires = 'php-composer(' + name + ') = ' + version
     return requires
 
 def repoquery(query):
     stdout = subprocess.run(['dnf', 'repoquery', '-q', '--whatprovides', requires], stdout=subprocess.PIPE, universal_newlines=True, check = True).stdout
     return stdout
 
+requirefile = open(os.path.join(outdir, 'require.pkgtmp'), 'w')
+requirefile.write('# PHP composer dependencies\n')
 
-with open('3rdparty/composer.json') as f:
-#with open('apps/files_external/3rdparty/composer.json') as f:
-    depdata = json.load(f)
-    for name, version in depdata['require'].items():
+providefile = open(os.path.join(outdir, 'provide.pkgtmp'), 'w')
+providefile.write('# Bundled libraries\n')
+
+
+for file in jsonfiles:
+    requirefile.write(f"# From {file}\n")
+    providefile.write(f"# From {file}\n")
+    
+    with open(os.path.join(srcdir, file)) as f:
+        jsondata = json.load(f)
+        packages = jsondata['require'].items()
+
+    print(f"\n{Style.BRIGHT}Parsing '{file}'...{Style.RESET_ALL}")
+    for name, verrange in packages:
         if name in excludes:
-            print('Skipping ' + name + ': Excluded')
+            print(f"{name} {verrange} -> in exclude list, skipping.")
             continue
-        print(name, version, ':')
-        version = version.replace('v', '')
-        if version == '*':
-            constraint = 0
-            version = '0'
-        elif version.startswith('^'):
-            constraint = 1
-            version = version.strip('^')
-        elif version.startswith('~'):
-            constraint = 2
-            version = version.strip('~')
-        else:
-            constraint = defaultconstraint
 
-        if re.search('[^.0-9]', version):
-            print('Unparseable version:', version)
-            continue
-        else:
-            minver = version
+        version, constraint = eval_version(verrange, defaultconstraint)
 
         requires = get_requires(name, version, constraint)
-        print('  Constraint (' + constraintmap[constraint] + '): ' + requires)
-
         package = repoquery(requires)
+
+        color = Fore.GREEN
+        found = True
         while len(package) == 0:
+            color = Fore.YELLOW
             constraint -= 1
             if constraint < 0:
+                constraint = 0
+                color = Fore.RED
+                package = 'none\n'
+                found = False
                 break
             requires = get_requires(name, version, constraint)
-            print('  Constraint (' + constraintmap[constraint] + '): ' + requires)
             package = repoquery(requires)
 
-        if len(package) == 0:
-            print('    -> no providing package found\n')
+        print(f"{name} {verrange} -> {Style.BRIGHT}{color}{package.rstrip()}{Style.RESET_ALL} ({constraintmap[constraint]})")
+        
+        if found:
+            requirefile.write(f"Requires: {requires}\n")
         else:
-            print('    -> ' + package)
+            providefile.write(f"Provides: bundled(php-composer({name})) = {version}\n")
+
