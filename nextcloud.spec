@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        20.0.5
+Version:        20.0.7
 Release:        2%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
