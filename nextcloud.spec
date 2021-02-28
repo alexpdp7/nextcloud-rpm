@@ -1,6 +1,6 @@
 Name:           nextcloud
 Version:        21.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
 URL:            http://nextcloud.com
@@ -71,7 +71,6 @@ Requires:       php-zip
 Requires:       php-filter
 Requires:       php-ldap
 Requires:       php-smbclient
-Requires:       php-imap
 Requires:       php-gmp
 Requires:       php-process
 Requires:       php-pecl-imagick
@@ -502,6 +501,9 @@ fi
 
 
 %changelog
+* Wed Feb 24 2021 Christopher Engelhard <ce@lcts.de> - 21.0.0-2
+- Drop dependency on php-imap. Fixes RHBZ #1933023
+
 * Wed Feb 24 2021 Christopher Engelhard <ce@lcts.de> - 21.0.0-1
 - Update to 21.0.0
 
