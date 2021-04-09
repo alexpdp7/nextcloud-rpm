@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        21.0.0
+Version:        21.0.1
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
@@ -502,6 +502,9 @@ fi
 
 
 %changelog
+* Fri Apr 9 2021 Alex Corcoles <alex@corcoles.net> - 21.0.1-1
+- Update to Nextcloud 21.0.1
+
 * Wed Feb 24 2021 Christopher Engelhard <ce@lcts.de> - 21.0.0-1
 - Update to 21.0.0
 
