@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        21.0.1
+Version:        21.0.2
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
@@ -501,8 +501,11 @@ fi
 
 
 %changelog
-* Wed Feb 24 2021 Christopher Engelhard <ce@lcts.de> - 21.0.0-2
-- Drop dependency on php-imap. Fixes RHBZ #1933023
+* Sat May 22 2021 Alex Corcoles <alex@corcoles.net> - 21.0.2-1
+- Update to Nextcloud 21.0.2
+- Rebase with Fedora to pick up:
+  Wed Feb 24 2021 Christopher Engelhard <ce@lcts.de> - 21.0.0-2
+  Drop dependency on php-imap. Fixes RHBZ #1933023
 
 * Fri Apr 9 2021 Alex Corcoles <alex@corcoles.net> - 21.0.1-1
 - Update to Nextcloud 21.0.1
