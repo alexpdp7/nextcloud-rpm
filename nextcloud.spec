@@ -71,7 +71,6 @@ Requires:       php-zip
 Requires:       php-filter
 Requires:       php-ldap
 Requires:       php-smbclient
-Requires:       php-imap
 Requires:       php-gmp
 Requires:       php-process
 Requires:       php-pecl-imagick
@@ -502,6 +501,9 @@ fi
 
 
 %changelog
+* Wed Feb 24 2021 Christopher Engelhard <ce@lcts.de> - 21.0.0-2
+- Drop dependency on php-imap. Fixes RHBZ #1933023
+
 * Fri Apr 9 2021 Alex Corcoles <alex@corcoles.net> - 21.0.1-1
 - Update to Nextcloud 21.0.1
 
