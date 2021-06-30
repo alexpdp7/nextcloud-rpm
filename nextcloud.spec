@@ -195,7 +195,7 @@ Summary:        Httpd integration for NextCloud
 Provides:       %{name}-webserver = %{version}-%{release}
 Requires:       %{name} = %{version}-%{release}
 # PHP dependencies
-Requires:       php-fpm
+Requires:       php-fpm httpd
 
 %description httpd
 %{summary}.
@@ -442,6 +442,8 @@ install -Dpm 644 %{SOURCE200} \
     %{buildroot}%{_sysconfdir}/nginx/default.d/%{name}.conf
 install -Dpm 644 %{SOURCE201} \
     %{buildroot}%{_sysconfdir}/nginx/conf.d/%{name}.conf
+
+# php-fpm config
 install -Dpm 644 %{SOURCE202} \
     %{buildroot}%{_sysconfdir}/php-fpm.d/%{name}.conf
 
@@ -451,10 +453,12 @@ install -Dpm 644 %{SOURCE3} %{buildroot}%{_unitdir}/nextcloud-cron.timer
 
 %post httpd
 /usr/bin/systemctl reload httpd.service > /dev/null 2>&1 || :
+/usr/bin/systemctl reload php-fpm.service > /dev/null 2>&1 || :
 
 %postun httpd
 if [ $1 -eq 0 ]; then
   /usr/bin/systemctl reload httpd.service > /dev/null 2>&1 || :
+  /usr/bin/systemctl reload php-fpm.service > /dev/null 2>&1 || :
 fi
 
 %post nginx
@@ -487,6 +491,7 @@ fi
 %config(noreplace) %{_sysconfdir}/httpd/conf.d/%{name}.conf
 %{_sysconfdir}/httpd/conf.d/%{name}-access.conf.avail
 %{_sysconfdir}/httpd/conf.d/%{name}*.inc
+%config(noreplace) %{_sysconfdir}/php-fpm.d/%{name}.conf
 
 %files nginx
 %config(noreplace) %{_sysconfdir}/nginx/default.d/%{name}.conf
@@ -501,6 +506,10 @@ fi
 
 
 %changelog
+* Wed Jun 30 2021 Christopher Engelhard <ce@lcts.de> - 21.0.2-1
+- Update to 21.0.2, fixes RHBZ 1977202 / CVE-2021-22915
+- Include php-fpm config in httpd subpackage
+
 * Sat May 22 2021 Alex Corcoles <alex@corcoles.net> - 21.0.2-1
 - Update to Nextcloud 21.0.2
 - Rebase with Fedora to pick up:
