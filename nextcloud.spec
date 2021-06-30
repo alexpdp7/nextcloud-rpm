@@ -509,6 +509,7 @@ fi
 * Wed Jun 30 2021 Christopher Engelhard <ce@lcts.de> - 21.0.2-1
 - Update to 21.0.2, fixes RHBZ 1977202 / CVE-2021-22915
 - Include php-fpm config in httpd subpackage
+- Set php memory limit to 512MB (RHBZ 1933529)
 
 * Sat May 22 2021 Alex Corcoles <alex@corcoles.net> - 21.0.2-1
 - Update to Nextcloud 21.0.2
