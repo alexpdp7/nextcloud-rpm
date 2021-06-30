@@ -195,7 +195,7 @@ Summary:        Httpd integration for NextCloud
 Provides:       %{name}-webserver = %{version}-%{release}
 Requires:       %{name} = %{version}-%{release}
 # PHP dependencies
-Requires:       php
+Requires:       php-fpm
 
 %description httpd
 %{summary}.
