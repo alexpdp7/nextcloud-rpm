@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        21.0.2
+Version:        21.0.3
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
@@ -506,6 +506,9 @@ fi
 
 
 %changelog
+* Fri Jul 2 2021 Alex Corcoles <alex@corcoles.net> - 21.0.3-1
+- Update to Nextcloud 21.0.3
+
 * Wed Jun 30 2021 Christopher Engelhard <ce@lcts.de> - 21.0.2-1
 - Update to 21.0.2, fixes RHBZ 1977202 / CVE-2021-22915
 - Include php-fpm config in httpd subpackage
