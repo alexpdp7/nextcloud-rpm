@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        21.0.3
+Version:        22.0.0
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
@@ -319,6 +319,7 @@ mv 3rdparty/php-http/httplug/LICENSE php-http-LICENSE
 mv 3rdparty/php-http/promise/LICENSE php-http-LICENSE
 mv 3rdparty/php-opencloud/openstack/LICENSE php-opencloud-LICENSE
 mv 3rdparty/phpseclib/phpseclib/LICENSE phpseclib-LICENSE
+mv 3rdparty/psr/event-dispatcher/LICENSE psr-LICENSE
 mv 3rdparty/psr/container/LICENSE psr-LICENSE
 mv 3rdparty/psr/http-client/LICENSE psr-LICENSE
 mv 3rdparty/psr/http-factory/LICENSE psr-LICENSE
@@ -361,18 +362,28 @@ mv 3rdparty/thecodingmachine/safe/LICENSE thecodingmachine-LICENSE
 mv 3rdparty/web-auth/cose-lib/LICENSE web-auth-LICENSE
 mv 3rdparty/web-auth/metadata-service/LICENSE web-auth-LICENSE
 mv 3rdparty/web-auth/webauthn-lib/LICENSE web-auth-LICENSE
+mv apps/activity/js/activity-sidebar.js.LICENSE.txt activity-sidebar.js-LICENSE
+mv apps/circles/LICENSE circles-LICENSE
 mv apps/cloud_federation_api/LICENSE cloud_federation_api-LICENSE
 mv apps/files_external/3rdparty/icewind/smb/LICENSE.txt icewind-LICENSE
 mv apps/files_external/3rdparty/icewind/streams/LICENCE icewind-LICENSE
+mv apps/files_pdfviewer/js/files_pdfviewer-workersrc.js.LICENSE.txt files_pdfviewer-workersrc.js-LICENSE
+mv apps/files_pdfviewer/js/files_pdfviewer-main.js.LICENSE.txt files_pdfviewer-main.js-LICENSE
+mv apps/files_pdfviewer/js/files_pdfviewer-public.js.LICENSE.txt files_pdfviewer-public.js-LICENSE
 mv apps/files_pdfviewer/js/pdfjs/LICENSE js-pdfjs-LICENSE
 mv apps/files_pdfviewer/js/pdfjs/web/cmaps/LICENSE js-pdfjs-cmaps-LICENSE
 mv apps/files_rightclick/COPYING files_rightclick-COPYING
 mv apps/files_rightclick/LICENSE files_rightclick-LICENSE
+mv apps/logreader/build/main.js.LICENSE.txt logreader-main.js-LICENSE
 mv apps/nextcloud_announcements/COPYING nextcloud_announcements-COPYING
 mv apps/notifications/COPYING notifications-LICENSE
+mv apps/notifications/js/notifications-main.js.LICENSE.txt notifications-main.js-LICENSE
 mv apps/password_policy/LICENSE password_policy-LICENSE
+mv apps/password_policy/js/password_policy-settings.js.LICENSE.txt password_policy-settings.js-LICENSE
 mv apps/photos/COPYING photos-COPYING
+mv apps/photos/js/photos-main.js.LICENSE.txt photos-main.js-LICENSE
 mv apps/privacy/COPYING privacy-COPYING
+mv apps/privacy/js/privacy-main.js.LICENSE.txt privacy-main.js-LICENSE
 mv apps/recommendations/LICENSE recommendations-LICENSE
 mv apps/serverinfo/COPYING serverinfo-LICENSE
 mv apps/survey_client/COPYING survey_client-LICENSE
@@ -380,6 +391,7 @@ mv apps/text/COPYING text-COPYING
 mv apps/theming/js/3rdparty/jscolor/LICENSE.txt jscolor-LICENSE
 mv apps/user_ldap/vendor/ui-multiselect/MIT-LICENSE js-jqueryui-multiselect-LICENSE
 mv apps/viewer/COPYING viewer-COPYING
+mv apps/viewer/js/viewer-main.js.LICENSE.txt viewer-main.js-LICENSE
 mv COPYING nextcloud-LICENSE
 mv core/fonts/LICENSE_OFL.txt fonts-LICENSE
 mv core/vendor/zxcvbn/LICENSE.txt zxcvbn-LICENSE
@@ -506,6 +518,9 @@ fi
 
 
 %changelog
+* Tue Jul  6 2021 Christopher Engelhard <ce@lcts.de> - 22.0.0-1
+- Update to 22.0.0
+
 * Fri Jul 2 2021 Alex Corcoles <alex@corcoles.net> - 21.0.3-1
 - Update to Nextcloud 21.0.3
 
