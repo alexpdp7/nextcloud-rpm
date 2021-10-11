@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        22.1.1
+Version:        22.2.1
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
@@ -395,6 +395,13 @@ mv apps/viewer/js/viewer-main.js.LICENSE.txt viewer-main.js-LICENSE
 mv COPYING nextcloud-LICENSE
 mv core/fonts/LICENSE_OFL.txt fonts-LICENSE
 mv core/vendor/zxcvbn/LICENSE.txt zxcvbn-LICENSE
+mv apps/photos/js/photos-src_views_Albums_vue.js.LICENSE.txt vue-LICENSE
+mv apps/photos/js/photos-node_modules_nextcloud_moment_node_modules_moment_locale_sync_recursive_-src_patchedRequest_j-3cb869.js.LICENSE.txt moment-locale-sync-recursive-LICENSE
+mv apps/photos/js/photos-vendors-node_modules_webdav_dist_node_index_js-node_modules_webdav_dist_node_request_js.js.LICENSE.txt  webdav-dist-node-request-LICENSE
+mv apps/photos/js/photos-vendors-node_modules_nextcloud_vue_dist_Components_ActionButton_js-node_modules_nextcloud_vue-701342.js.LICENSE.txt components-actionbutton-LICENSE
+mv apps/photos/js/photos-src_mixins_GridConfig_js-src_utils_CancelableRequest_js-src_components_EmptyContent_vue-src_c-45f6cf.js.LICENSE.txt components-emptycontent-vue-LICENSE
+mv apps/photos/js/photos-vendors-node_modules_nextcloud_moment_dist_index_js-node_modules_nextcloud_moment_node_module-ca085a.js.LICENSE.txt moment-LICENSE
+mv apps/photos/js/photos-src_patchedRequest_js-src_views_Tags_vue.js.LICENSE.txt views-tags-vue-LICENSE
 
 %check
 # Make sure there are no license files left over
@@ -518,6 +525,9 @@ fi
 
 
 %changelog
+* Sat Nov 13 2021 Alex Corcoles <alex@corcoles.net> - 22.2.1-1
+- Update to Nextcloud 22.2.1
+
 * Fri Sep 17 2021 Alex Corcoles <alex@corcoles.net> - 22.1.1-1
 - Update to Nextcloud 22.1.1
 
