@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        22.2.1
+Version:        23.0.0
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
@@ -109,8 +109,6 @@ Provides: bundled(php-composer(guzzlehttp/uri-template)) = 0.2.0
 Provides: bundled(php-composer(icewind/searchdav)) = 2.0.0
 Provides: bundled(php-composer(icewind/streams)) = 0.7.2
 Provides: bundled(php-composer(justinrainbow/json-schema)) = 5.2.10
-Provides: bundled(php-composer(league/flysystem)) = 1.1.3
-Provides: bundled(php-composer(league/mime-type-detection)) = 1.7.0
 Provides: bundled(php-composer(league/uri)) = 6.4.0
 Provides: bundled(php-composer(league/uri-interfaces)) = 2.2.0
 Provides: bundled(php-composer(microsoft/azure-storage-blob)) = 1.5.2
@@ -119,7 +117,6 @@ Provides: bundled(php-composer(mtdowling/jmespath.php)) = 2.6.0
 Provides: bundled(php-composer(nextcloud/lognormalizer)) = 1.0.0
 Provides: bundled(php-composer(nikic/php-parser)) = 4.10.4
 Provides: bundled(php-composer(opis/closure)) = 3.6.1
-Provides: bundled(php-composer(patchwork/jsqueeze)) = 2.0.5
 Provides: bundled(php-composer(pear/archive_tar)) = 1.4.12
 Provides: bundled(php-composer(pear/console_getopt)) = 1.4.3
 Provides: bundled(php-composer(pear/pear-core-minimal)) = 1.10.10
@@ -298,8 +295,6 @@ mv 3rdparty/guzzlehttp/psr7/LICENSE guzzlehttp-LICENSE
 mv 3rdparty/guzzlehttp/uri-template/LICENSE.md guzzlehttp-LICENSE
 mv 3rdparty/icewind/searchdav/LICENSE icewind-LICENSE
 mv 3rdparty/justinrainbow/json-schema/LICENSE justinrainbow-LICENSE
-mv 3rdparty/league/flysystem/LICENSE league-LICENSE
-mv 3rdparty/league/mime-type-detection/LICENSE league-LICENSE
 mv 3rdparty/league/uri-interfaces/LICENSE league-LICENSE
 mv 3rdparty/league/uri/LICENSE league-LICENSE
 mv '3rdparty/LICENSE INFO' 3rdparty-LICENSE_INFO
@@ -309,8 +304,6 @@ mv 3rdparty/mtdowling/jmespath.php/LICENSE mtdowling-LICENSE
 mv 3rdparty/nextcloud/lognormalizer/COPYING lognormalizer-LICENSE
 mv 3rdparty/nikic/php-parser/LICENSE nikic-LICENSE
 mv 3rdparty/opis/closure/LICENSE opis-LICENSE
-mv 3rdparty/patchwork/jsqueeze/LICENSE.ASL20 patchwork-LICENSE-APACHE
-mv 3rdparty/patchwork/jsqueeze/LICENSE.GPLv2 patchwork-LICENSE-GPL
 mv 3rdparty/pear/console_getopt/LICENSE pear-LICENSE
 mv 3rdparty/pear/pear_exception/LICENSE pear-LICENSE
 mv 3rdparty/php-ds/php-ds/LICENSE php-ds-LICENSE
@@ -402,6 +395,20 @@ mv apps/photos/js/photos-vendors-node_modules_nextcloud_vue_dist_Components_Acti
 mv apps/photos/js/photos-src_mixins_GridConfig_js-src_utils_CancelableRequest_js-src_components_EmptyContent_vue-src_c-45f6cf.js.LICENSE.txt components-emptycontent-vue-LICENSE
 mv apps/photos/js/photos-vendors-node_modules_nextcloud_moment_dist_index_js-node_modules_nextcloud_moment_node_module-ca085a.js.LICENSE.txt moment-LICENSE
 mv apps/photos/js/photos-src_patchedRequest_js-src_views_Tags_vue.js.LICENSE.txt views-tags-vue-LICENSE
+mv 3rdparty/cweagans/composer-patches/LICENSE.md composer-patches-LICENSE
+mv apps/notifications/js/notifications-settings.js.LICENSE.txt notifications-settings-LICENSE
+mv apps/files_pdfviewer/js/pdfjs/web/standard_fonts/LICENSE_FOXIT standard-fonts-foxit-LICENSE
+mv apps/files_pdfviewer/js/pdfjs/web/standard_fonts/LICENSE_LIBERATION standard-fonts-liberation-LICENSE
+mv apps/text/js/editor-rich.js.LICENSE.txt editor-rich-LICENSE
+mv apps/text/js/vendors.js.LICENSE.txt vendors-LICENSE
+mv apps/text/js/editor.js.LICENSE.txt editor-LICENSE
+mv apps/text/js/text-viewer.js.LICENSE.txt text-viewer-LICENSE
+mv apps/text/js/text-text.js.LICENSE.txt text-text-LICENSE
+mv apps/text/js/text-files.js.LICENSE.txt  text-files-LICENSE
+mv apps/text/js/text-public.js.LICENSE.txt text-public-LICENSE
+mv apps/files_videoplayer/js/files_videoplayer-vendors-node_modules_video_js_dist_video_es_js.js.LICENSE.txt videoplayer-video-es-LICENSE
+mv apps/files_videoplayer/js/files_videoplayer-main.js.LICENSE.txt videoplayer-main-LICENSE
+mv apps/activity/js/activity-dashboard.js.LICENSE.txt activity-dashboard-LICENSE
 
 %check
 # Make sure there are no license files left over
@@ -525,6 +532,9 @@ fi
 
 
 %changelog
+* Sat Jan 29 2022 Alex Corcoles <alex@corcoles.net> - 23.0.0-1
+- Update to Nextcloud 23.0.0
+
 * Sat Nov 13 2021 Alex Corcoles <alex@corcoles.net> - 22.2.1-1
 - Update to Nextcloud 22.2.1
 
