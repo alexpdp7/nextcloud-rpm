@@ -17,9 +17,10 @@ token = $copr_token
 copr_url = https://copr.fedorainfracloud.org
 EOF
 
-docker run -it \
+podman run -it \
 	-v $(pwd)/SRPMS:/root/rpmbuild/SRPMS/ \
 	-v $copr_config:/root/.config/copr \
+	--security-opt label=disable \
 	build:latest copr-cli build $copr_project /root/rpmbuild/SRPMS/$(ls SRPMS)
 
 rm $copr_config
