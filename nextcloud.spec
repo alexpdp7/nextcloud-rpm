@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        23.0.3
+Version:        24.0.1
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
@@ -367,7 +367,7 @@ mv apps/files_pdfviewer/js/pdfjs/LICENSE js-pdfjs-LICENSE
 mv apps/files_pdfviewer/js/pdfjs/web/cmaps/LICENSE js-pdfjs-cmaps-LICENSE
 mv apps/files_rightclick/COPYING files_rightclick-COPYING
 mv apps/files_rightclick/LICENSE files_rightclick-LICENSE
-mv apps/logreader/build/main.js.LICENSE.txt logreader-main.js-LICENSE
+mv apps/logreader/js/logreader-main.js.LICENSE.txt logreader-main.js-LICENSE
 mv apps/nextcloud_announcements/COPYING nextcloud_announcements-COPYING
 mv apps/notifications/COPYING notifications-LICENSE
 mv apps/notifications/js/notifications-main.js.LICENSE.txt notifications-main.js-LICENSE
@@ -382,7 +382,7 @@ mv apps/serverinfo/COPYING serverinfo-LICENSE
 mv apps/survey_client/COPYING survey_client-LICENSE
 mv apps/text/COPYING text-COPYING
 mv apps/theming/js/3rdparty/jscolor/LICENSE.txt jscolor-LICENSE
-mv apps/user_ldap/vendor/ui-multiselect/MIT-LICENSE js-jqueryui-multiselect-LICENSE
+mv apps/user_ldap/js/vendor/ui-multiselect/MIT-LICENSE js-jqueryui-multiselect-LICENSE
 mv apps/viewer/COPYING viewer-COPYING
 mv apps/viewer/js/viewer-main.js.LICENSE.txt viewer-main.js-LICENSE
 mv COPYING nextcloud-LICENSE
@@ -391,7 +391,6 @@ mv core/vendor/zxcvbn/LICENSE.txt zxcvbn-LICENSE
 mv apps/photos/js/photos-src_views_Albums_vue.js.LICENSE.txt vue-LICENSE
 mv apps/photos/js/photos-node_modules_nextcloud_moment_node_modules_moment_locale_sync_recursive_-src_patchedRequest_j-3cb869.js.LICENSE.txt moment-locale-sync-recursive-LICENSE
 mv apps/photos/js/photos-vendors-node_modules_webdav_dist_node_index_js-node_modules_webdav_dist_node_request_js.js.LICENSE.txt  webdav-dist-node-request-LICENSE
-mv apps/photos/js/photos-vendors-node_modules_nextcloud_vue_dist_Components_ActionButton_js-node_modules_nextcloud_vue-701342.js.LICENSE.txt components-actionbutton-LICENSE
 mv apps/photos/js/photos-src_mixins_GridConfig_js-src_utils_CancelableRequest_js-src_components_EmptyContent_vue-src_c-45f6cf.js.LICENSE.txt components-emptycontent-vue-LICENSE
 mv apps/photos/js/photos-vendors-node_modules_nextcloud_moment_dist_index_js-node_modules_nextcloud_moment_node_module-ca085a.js.LICENSE.txt moment-LICENSE
 mv apps/photos/js/photos-src_patchedRequest_js-src_views_Tags_vue.js.LICENSE.txt views-tags-vue-LICENSE
@@ -409,12 +408,19 @@ mv apps/text/js/text-public.js.LICENSE.txt text-public-LICENSE
 mv apps/files_videoplayer/js/files_videoplayer-vendors-node_modules_video_js_dist_video_es_js.js.LICENSE.txt videoplayer-video-es-LICENSE
 mv apps/files_videoplayer/js/files_videoplayer-main.js.LICENSE.txt videoplayer-main-LICENSE
 mv apps/activity/js/activity-dashboard.js.LICENSE.txt activity-dashboard-LICENSE
+mv apps/photos/js/photos-src_patchedRequest_js-node_modules_moment_locale_sync_recursive_-src_views_Timeline_vue.js.LICENSE.txt photos-src_patchedRequest_js-node_modules_moment_locale_sync_recursive_-src_views_Timeline_vue.js.LICENSE
+mv apps/photos/js/photos-vendors-node_modules_nextcloud_vue_dist_Components_ActionButton_js-node_modules_nextcloud_vue-208129.js.LICENSE.txt photos-vendors-node_modules_nextcloud_vue_dist_Components_ActionButton_js-node_modules_nextcloud_vue-208129.js.LICENSE
+mv apps/photos/js/photos-vendors-node_modules_nextcloud_moment_dist_index_js-node_modules_moment_locale_af_js-node_mod-100548.js.LICENSE.txt photos-vendors-node_modules_nextcloud_moment_dist_index_js-node_modules_moment_locale_af_js-node_mod-100548.js.LICENSE
+mv apps/firstrunwizard/js/firstrunwizard-main.js.LICENSE.txt firstrunwizard-LICENSE
+mv apps/files_pdfviewer/COPYING files_pdfviewer-LICENSE
+mv 3rdparty/symfony/deprecation-contracts/LICENSE symfony-deprecation-contracts-LICENSE
+
 
 %check
 # Make sure there are no license files left over
+# ./dist looks like a repackaging of other content from the repo. it's marked as binary by gitattributes, and I checked that many files there are spliced or duplicated from other parts, so alex@corcoles.net assumes it's OK to skip
 : Check for leftover license files
-find . -mindepth 2 \( -name '*LICENSE*' -o -name '*LICENCE*' -o  -name '*COPYING*' \)
-nb=$( find . -mindepth 2 \( -name '*LICENSE*' -o -name '*LICENCE*' -o  -name '*COPYING*' \) | wc -l )
+nb=$( find . -mindepth 2 \( -name '*LICENSE*' -o -name '*LICENCE*' -o  -name '*COPYING*' \) | grep -v -e ^./dist | wc -l )
 if [ $nb -gt 0 ]
   then
   false Found unexpected licenses to verify
@@ -532,6 +538,9 @@ fi
 
 
 %changelog
+* Sat Jun 18 2022 Alex Corcoles <alex@corcoles.net> - 24.0.1-1
+- Update to Nextcloud 24.0.1
+
 * Thu Mar 31 2022 Alex Corcoles <alex@corcoles.net> - 23.0.3-1
 - Update to Nextcloud 23.0.3
 
