@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        24.0.4
+Version:        24.0.5
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
@@ -620,6 +620,10 @@ fi
 
 
 %changelog
+* Sat Sep 10 2022 Alex Corcoles <alex@corcoles.net> - 24.0.5-1
+- Update to Nextcloud 24.0.5
+- Also incorporate latest updates from Fedora package
+
 * Sat Aug 14 2022 Alex Corcoles <alex@corcoles.net> - 24.0.4-1
 - Update to Nextcloud 24.0.4
 
