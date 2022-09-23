@@ -21,6 +21,9 @@ ErrorDocument 404 /nextcloud/core/templates/404.php
             RequestHeader set XAuthorization %{XAUTHORIZATION}e env=XAUTHORIZATION
         </IfModule>
     </IfModule>
+    <FilesMatch \.(php|phar)$>
+        SetHandler "proxy:unix:/run/php-fpm/nextcloud.sock|fcgi://localhost"
+    </FilesMatch>
 </IfModule>
 
 <IfModule mod_php5.c>
