@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        24.0.6
+Version:        25.0.1
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
@@ -395,6 +395,14 @@ mv 3rdparty/web-auth/metadata-service/LICENSE web-auth-LICENSE
 mv 3rdparty/web-auth/webauthn-lib/LICENSE web-auth-LICENSE
 mv 3rdparty/cweagans/composer-patches/LICENSE.md composer-patches-LICENSE.md
 mv 3rdparty/symfony/deprecation-contracts/LICENSE deprecation-contracts-LICENSE
+mv 3rdparty/mexitek/phpcolors/LICENSE mexitek-phpcolors-LICENSE
+mv 3rdparty/fusonic/linq/LICENSE fusonic-linq-LICENSE
+mv 3rdparty/fusonic/opengraph/LICENSE fusonic-opengraph-LICENSE
+mv 3rdparty/laravel/serializable-closure/LICENSE.md laravel-serializable-closure-LICENSE.md
+mv 3rdparty/symfony/css-selector/LICENSE symfony-css-selector-LICENSE
+mv 3rdparty/symfony/http-foundation/LICENSE symphony-http-foundation-LICENSE
+mv 3rdparty/symfony/dom-crawler/LICENSE symfony-dom-crawler-LICENSE
+mv 3rdparty/mlocati/ip-lib/LICENSE.txt mlocati-ip-lib-LICENSE.txt
 mv apps/activity/js/activity-sidebar.js.LICENSE.txt activity-sidebar.js-LICENSE
 mv apps/activity/js/activity-dashboard.js.LICENSE.txt activity-dashboard.js-LICENSE.txt
 mv apps/circles/LICENSE circles-LICENSE
@@ -423,7 +431,6 @@ mv apps/serverinfo/COPYING serverinfo-LICENSE
 mv apps/survey_client/COPYING survey_client-LICENSE
 mv apps/text/COPYING text-COPYING
 mv apps/text/js/vendors.js.LICENSE.txt vendors.js-LICENSE.txt
-mv apps/text/js/editor-rich.js.LICENSE.txt editor-rich.js-LICENSE.txt
 mv apps/text/js/text-files.js.LICENSE.txt text-files.js-LICENSE.txt
 mv apps/text/js/text-public.js.LICENSE.txt text-public.js-LICENSE.txt
 mv apps/text/js/text-text.js.LICENSE.txt text-text.js-LICENSE.txt
@@ -436,22 +443,87 @@ mv apps/viewer/js/viewer-main.js.LICENSE.txt viewer-main.js-LICENSE
 mv COPYING nextcloud-LICENSE
 mv core/fonts/LICENSE_OFL.txt fonts-LICENSE
 mv core/vendor/zxcvbn/LICENSE.txt zxcvbn-LICENSE
-mv apps/files_videoplayer/js/files_videoplayer-main.js.LICENSE.txt files_videoplayer-main.js-LICENSE.txt
-mv apps/files_videoplayer/js/files_videoplayer-vendors-node_modules_video_js_dist_video_es_js.js.LICENSE.txt files_videoplayer-vendors-node_modules_video_js_dist_video_es_js.js-LICENSE.txt
 mv apps/files_pdfviewer/COPYING files_pdfviewer-COPYING
 mv apps/files_pdfviewer/js/pdfjs/web/standard_fonts/LICENSE_FOXIT standard_fonts-LICENSE_FOXIT
 mv apps/files_pdfviewer/js/pdfjs/web/standard_fonts/LICENSE_LIBERATION standard_fonts-LICENSE_LIBERATION
 mv apps/firstrunwizard/js/firstrunwizard-main.js.LICENSE.txt firstrunwizard-main.js-LICENSE.txt
-mv apps/photos/js/photos-src_patchedRequest_js-src_views_Tags_vue.js.LICENSE.txt photos-src_patchedRequest_js-src_views_Tags_vue.js-LICENSE.txt
-mv apps/photos/js/photos-vendors-node_modules_nextcloud_moment_dist_index_js-node_modules_nextcloud_moment_node_module-ca085a.js.LICENSE.txt photos-vendors-node_modules_nextcloud_moment_dist_index_js-node_modules_nextcloud_moment_node_module-ca085a.js-LICENSE.txt
-mv apps/photos/js/photos-vendors-node_modules_webdav_dist_node_index_js-node_modules_webdav_dist_node_request_js.js.LICENSE.txt photos-vendors-node_modules_webdav_dist_node_index_js-node_modules_webdav_dist_node_request_js.js-LICENSE.txt
-mv apps/photos/js/photos-src_views_Albums_vue.js.LICENSE.txt photos-src_views_Albums_vue.js-LICENSE.txt
-mv apps/photos/js/photos-node_modules_nextcloud_moment_node_modules_moment_locale_sync_recursive_-src_patchedRequest_j-3cb869.js.LICENSE.txt photos-node_modules_nextcloud_moment_node_modules_moment_locale_sync_recursive_-src_patchedRequest_j-3cb869.js-LICENSE.txt
-mv apps/photos/js/photos-vendors-node_modules_nextcloud_moment_dist_index_js-node_modules_moment_locale_af_js-node_mod-100548.js.LICENSE.txt photos-vendors-node_modules_nextcloud_moment_dist_index_js-node_modules_moment_locale_af_js-node_mod-100548.js-LICENSE.txt
 mv apps/photos/js/photos-vendors-node_modules_nextcloud_vue_dist_Components_ActionButton_js-node_modules_nextcloud_vue-208129.js.LICENSE.txt photos-vendors-node_modules_nextcloud_vue_dist_Components_ActionButton_js-node_modules_nextcloud_vue-208129.js-LICENSE.txt
-mv apps/photos/js/photos-src_mixins_GridConfig_js-src_utils_CancelableRequest_js-src_components_EmptyContent_vue-src_c-45f6cf.js.LICENSE.txt photos-src_mixins_GridConfig_js-src_utils_CancelableRequest_js-src_components_EmptyContent_vue-src_c-45f6cf.js-LICENSE.txt
-mv apps/photos/js/photos-src_patchedRequest_js-node_modules_moment_locale_sync_recursive_-src_views_Timeline_vue.js.LICENSE.txt photos-src_patchedRequest_js-node_modules_moment_locale_sync_recursive_-src_views_Timeline_vue.js-LICENSE.txt
 mv apps/notifications/js/notifications-settings.js.LICENSE.txt notifications-settings.js-LICENSE.txt
+mv apps/suspicious_login/js/settings.js.LICENSE.txt settings.js.LICENSE.txt
+mv apps/suspicious_login/vendor/psr/log/LICENSE psr_log_LICENSE
+mv apps/suspicious_login/vendor/symfony/polyfill-mbstring/LICENSE polyfill-mbstring-LICENSE
+mv apps/suspicious_login/vendor/symfony/polyfill-php80/LICENSE polyfill-php80-LICENSE
+mv apps/suspicious_login/vendor/symfony/polyfill-php73/LICENSE polyfill-php73-LICENSE
+mv apps/suspicious_login/vendor/league/flysystem/LICENSE flysystem-LICENSE
+mv apps/suspicious_login/vendor/league/mime-type-detection/LICENSE mime-type-detection-LICENSE
+mv apps/suspicious_login/vendor/darsyn/ip/LICENSE.md ip-LICENSE
+mv apps/suspicious_login/vendor/amphp/process/LICENSE amphp-process-LICENSE
+mv apps/suspicious_login/vendor/amphp/sync/LICENSE amphp-sync-LICENSE
+mv apps/suspicious_login/vendor/amphp/amp/LICENSE amphp-amp-LICENSE
+mv apps/suspicious_login/vendor/amphp/parser/LICENSE amphp-parser-LICENSE
+mv apps/suspicious_login/vendor/amphp/parallel/LICENSE amphp-parallel-LICENSE
+mv apps/suspicious_login/vendor/amphp/byte-stream/LICENSE amphp-byte-stream-LICENSE
+mv apps/suspicious_login/vendor/amphp/serialization/LICENSE amphp-serialization-LICENSE
+mv apps/suspicious_login/vendor/rubix/ml/LICENSE rubix-ml-LICENSE
+mv apps/suspicious_login/vendor/rubix/tensor/lib/JAMA/LICENCE.md rubix-tensor-lib-JAMA-LICENCE
+mv apps/suspicious_login/vendor/rubix/tensor/LICENSE rubix-tensor-LICENSE
+mv apps/suspicious_login/COPYING suspicious-login-COPYING
+mv apps/related_resources/js/vendors-node_modules_nextcloud_vue_dist_Components_NcRelatedResourcesPanel_js.related_resources.js.LICENSE.txt vendors-node_modules_nextcloud_vue_dist_Components_NcRelatedResourcesPanel_js.related_resources.js.LICENSE.txt
+mv apps/related_resources/js/related_resources.js.LICENSE.txt related_resources.js.LICENSE.txt
+mv apps/related_resources/LICENSE related_resources-LICENSE
+mv apps/photos/js/photos-vendors-node_modules_nextcloud_upload_dist_index_esm_js-node_modules_nextcloud_vue_dist_Compo-9e098d.js.LICENSE.txt photos-vendors-node_modules_nextcloud_upload_dist_index_esm_js-node_modules_nextcloud_vue_dist_Compo-9e098d.js.LICENSE.txt
+mv apps/photos/js/photos-src_services_DavRequest_js-src_components_File_vue.js.LICENSE.txt photos-src_services_DavRequest_js-src_components_File_vue.js.LICENSE.txt
+mv apps/photos/js/photos-vendors-node_modules_nextcloud_upload_dist_index_esm_js-node_modules_vue-virtual-grid_dist_vu-bebe85.js.LICENSE.txt photos-vendors-node_modules_nextcloud_upload_dist_index_esm_js-node_modules_vue-virtual-grid_dist_vu-bebe85.js.LICENSE.txt
+mv apps/photos/js/photos-src_services_DavRequest_js-src_utils_CancelableRequest_js-src_components_File_vue.js.LICENSE.txt photos-src_services_DavRequest_js-src_utils_CancelableRequest_js-src_components_File_vue.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_GridConfig_js-src_utils_CancelableRequest_js-src_components_EmptyContent_vue-src_c-c08051.js.LICENSE.txt photos-src_mixins_GridConfig_js-src_utils_CancelableRequest_js-src_components_EmptyContent_vue-src_c-c08051.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_AbortControllerMixin_js-src_components_Collection_CollectionCover_vue-src_componen-960c86.js.LICENSE.txt photos-src_mixins_AbortControllerMixin_js-src_components_Collection_CollectionCover_vue-src_componen-960c86.js.LICENSE.txt
+mv apps/photos/js/photos-src_views_FaceContent_vue.js.LICENSE.txt photos-src_views_FaceContent_vue.js.LICENSE.txt
+mv apps/photos/js/photos-vendors-node_modules_nextcloud_vue_dist_Components_ActionButton_js-node_modules_nextcloud_vue-535d92.js.LICENSE.txt photos-vendors-node_modules_nextcloud_vue_dist_Components_ActionButton_js-node_modules_nextcloud_vue-535d92.js.LICENSE.txt
+mv apps/photos/js/photos-vendors-node_modules_nextcloud_upload_dist_index_esm_js.js.LICENSE.txt photos-vendors-node_modules_nextcloud_upload_dist_index_esm_js.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_FetchFilesMixin_js-src_mixins_FilesByMonthMixin_js-node_modules_vue-material-desig-ab9ff7.js.LICENSE.txt photos-src_mixins_FetchFilesMixin_js-src_mixins_FilesByMonthMixin_js-node_modules_vue-material-desig-ab9ff7.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_FetchFilesMixin_js-node_modules_vue-material-design-icons_ImagePlus_vue-src_compon-c78281.js.LICENSE.txt photos-src_mixins_FetchFilesMixin_js-node_modules_vue-material-design-icons_ImagePlus_vue-src_compon-c78281.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_AbortControllerMixin_js-src_services_DavRequest_js-src_components_File_vue.js.LICENSE.txt photos-src_mixins_AbortControllerMixin_js-src_services_DavRequest_js-src_components_File_vue.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_FetchFilesMixin_js-src_mixins_FilesByMonthMixin_js-src_components_Actions_ActionDo-a6eb03.js.LICENSE.txt photos-src_mixins_FetchFilesMixin_js-src_mixins_FilesByMonthMixin_js-src_components_Actions_ActionDo-a6eb03.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_FetchFilesMixin_js-src_mixins_FilesByMonthMixin_js-node_modules_vue-material-desig-f0a37f.js.LICENSE.txt photos-src_mixins_FetchFilesMixin_js-src_mixins_FilesByMonthMixin_js-node_modules_vue-material-desig-f0a37f.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_AbortControllerMixin_js-src_components_VirtualScrolling_vue-src_views_Albums_vue.js.LICENSE.txt photos-src_mixins_AbortControllerMixin_js-src_components_VirtualScrolling_vue-src_views_Albums_vue.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_FetchAlbumsMixin_js-src_components_Albums_AlbumForm_vue.js.LICENSE.txt photos-src_mixins_FetchAlbumsMixin_js-src_components_Albums_AlbumForm_vue.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_FetchAlbumsMixin_js-node_modules_vue-material-design-icons_Plus_vue-src_components-4c933a.js.LICENSE.txt photos-src_mixins_FetchAlbumsMixin_js-node_modules_vue-material-design-icons_Plus_vue-src_components-4c933a.js.LICENSE.txt
+mv apps/photos/js/photos-public.js.LICENSE.txt photos-public.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_FetchFilesMixin_js-src_mixins_FilesSelectionMixin_js-node_modules_vue-material-des-bd2ac8.js.LICENSE.txt photos-src_mixins_FetchFilesMixin_js-src_mixins_FilesSelectionMixin_js-node_modules_vue-material-des-bd2ac8.js.LICENSE.txt
+mv apps/photos/js/photos-node_modules_vue-material-design-icons_PackageVariant_vue-node_modules_vue-material-design-ic-4e283b.js.LICENSE.txt photos-node_modules_vue-material-design-icons_PackageVariant_vue-node_modules_vue-material-design-ic-4e283b.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_GridConfig_js-src_components_EmptyContent_vue-src_components_FolderTagPreview_vue--cac48e.js.LICENSE.txt photos-src_mixins_GridConfig_js-src_components_EmptyContent_vue-src_components_FolderTagPreview_vue--cac48e.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_FetchAlbumsMixin_js-node_modules_vue-material-design-icons_Plus_vue-src_components-b06a7d.js.LICENSE.txt photos-src_mixins_FetchAlbumsMixin_js-node_modules_vue-material-design-icons_Plus_vue-src_components-b06a7d.js.LICENSE.txt
+mv apps/photos/js/photos-src_views_Timeline_vue.js.LICENSE.txt photos-src_views_Timeline_vue.js.LICENSE.txt
+mv apps/photos/js/photos-src_views_Tags_vue.js.LICENSE.txt photos-src_views_Tags_vue.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_FetchFilesMixin_js-src_mixins_FilesByMonthMixin_js-node_modules_vue-material-desig-cf825a.js.LICENSE.txt photos-src_mixins_FetchFilesMixin_js-src_mixins_FilesByMonthMixin_js-node_modules_vue-material-desig-cf825a.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_AbortControllerMixin_js-src_components_CollectionCover_vue-src_components_Collecti-e80ab0.js.LICENSE.txt photos-src_mixins_AbortControllerMixin_js-src_components_CollectionCover_vue-src_components_Collecti-e80ab0.js.LICENSE.txt
+mv apps/photos/js/photos-src_views_SharedAlbums_vue.js.LICENSE.txt photos-src_views_SharedAlbums_vue.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_FetchAlbumsMixin_js-node_modules_vue-material-design-icons_Plus_vue-src_components-f20774.js.LICENSE.txt photos-src_mixins_FetchAlbumsMixin_js-node_modules_vue-material-design-icons_Plus_vue-src_components-f20774.js.LICENSE.txt 
+mv apps/photos/js/photos-src_views_SharedAlbumContent_vue.js.LICENSE.txt photos-src_views_SharedAlbumContent_vue.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_AbortControllerMixin_js-src_mixins_FilesSelectionMixin_js-src_components_File_vue--80ca54.js.LICENSE.txt photos-src_mixins_AbortControllerMixin_js-src_mixins_FilesSelectionMixin_js-src_components_File_vue--80ca54.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_FetchSharedAlbumsMixin_js-src_components_HeaderNavigation_vue.js.LICENSE.txt photos-src_mixins_FetchSharedAlbumsMixin_js-src_components_HeaderNavigation_vue.js.LICENSE.txt
+mv apps/photos/js/photos-node_modules_vue-material-design-icons_PackageVariant_vue-node_modules_vue-material-design-ic-36962a.js.LICENSE.txt photos-node_modules_vue-material-design-icons_PackageVariant_vue-node_modules_vue-material-design-ic-36962a.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_AbortControllerMixin_js-src_views_Albums_vue.js.LICENSE.txt photos-src_mixins_AbortControllerMixin_js-src_views_Albums_vue.js.LICENSE.txt
+mv apps/photos/js/photos-vendors-node_modules_nextcloud_vue_dist_ncvuecomponents_js.js.LICENSE.txt photos-vendors-node_modules_nextcloud_vue_dist_ncvuecomponents_js.js.LICENSE.txt
+mv apps/photos/js/photos-src_views_AlbumContent_vue.js.LICENSE.txt photos-src_views_AlbumContent_vue.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_AbortControllerMixin_js-node_modules_vue-material-design-icons_Send_vue-src_views_-9eb30b.js.LICENSE.txt photos-src_mixins_AbortControllerMixin_js-node_modules_vue-material-design-icons_Send_vue-src_views_-9eb30b.js.LICENSE.txt
+mv apps/photos/js/photos-src_mixins_FetchFilesMixin_js-src_mixins_FilesSelectionMixin_js-node_modules_vue-material-des-d0b874.js.LICENSE.txt photos-src_mixins_FetchFilesMixin_js-src_mixins_FilesSelectionMixin_js-node_modules_vue-material-des-d0b874.js.LICENSE.txt
+mv apps/photos/js/photos-src_views_Folders_vue.js.LICENSE.txt photos-src_views_Folders_vue.js.LICENSE.txt
+mv apps/photos/js/photos-vendors-node_modules_vue-virtual-grid_dist_vue-virtual-grid_es_js.js.LICENSE.txt photos-vendors-node_modules_vue-virtual-grid_dist_vue-virtual-grid_es_js.js.LICENSE.txt
+mv apps/photos/js/photos-node_modules_vue-material-design-icons_AlertCircle_vue-node_modules_vue-material-design-icons-5becbc.js.LICENSE.txt photos-node_modules_vue-material-design-icons_AlertCircle_vue-node_modules_vue-material-design-icons-5becbc.js.LICENSE.txt
+mv apps/photos/js/photos-src_views_Faces_vue.js.LICENSE.txt photos-src_views_Faces_vue.js.LICENSE.txt
+mv apps/photos/js/photos-src_services_Albums_js-src_components_HeaderNavigation_vue.js.LICENSE.txt photos-src_services_Albums_js-src_components_HeaderNavigation_vue.js.LICENSE.txt
+mv apps/recommendations/js/files_recommendation-main.js.LICENSE.txt files_recommendation-main.js.LICENSE.txt
+mv apps/recommendations/js/files_recommendation-dashboard.js.LICENSE.txt files_recommendation-dashboard.js.LICENSE.txt
+mv apps/bruteforcesettings/js/bruteforcesettings-main.js.LICENSE.txt bruteforcesettings-main.js.LICENSE.txt
+mv apps/bruteforcesettings/LICENSE bruteforcesettings-LICENSE
+mv apps/twofactor_totp/js/twofactor_totp-main-settings.js.LICENSE.txt twofactor_totp-main-settings.js.LICENSE.txt 
+mv apps/twofactor_totp/js/twofactor_totp-main-login-setup.js.LICENSE.txt twofactor_totp-main-login-setup.js.LICENSE.txt
+mv apps/twofactor_totp/vendor/christian-riesen/base32/LICENSE christian-riesen-base32-LICENSE
+mv apps/twofactor_totp/vendor/rullzer/easytotp/LICENSE rullzer-easytotp-LICENSE
+mv apps/twofactor_totp/COPYING twofactor_totp-COPYING
+mv apps/activity/js/activity-adminSettings.js.LICENSE.txt activity-adminSettings.js.LICENSE.txt
+mv apps/activity/js/activity-personalSettings.js.LICENSE.txt activity-personalSettings.js.LICENSE.txt
 mv dist/settings-vue-settings-personal-security.js.LICENSE.txt settings-vue-settings-personal-security.js.LICENSE.txt
 mv dist/core-login.js.LICENSE.txt core-login.js-LICENSE.txt
 mv dist/files-sidebar.js.LICENSE.txt files-sidebar.js-LICENSE.txt
@@ -466,7 +538,6 @@ mv dist/core-files_client.js.LICENSE.txt core-files_client.js-LICENSE.txt
 mv dist/systemtags-systemtags.js.LICENSE.txt systemtags-systemtags.js-LICENSE.txt
 mv dist/comments-comments.js.LICENSE.txt comments-comments.js-LICENSE.txt
 mv dist/files_versions-files_versions.js.LICENSE.txt files_versions-files_versions.js.LICENSE.txt
-mv dist/accessibility-accessibility.js.LICENSE.txt accessibility-accessibility.js-LICENSE.txt
 mv dist/twofactor_backupcodes-settings.js.LICENSE.txt twofactor_backupcodes-settings.js-LICENSE.txt
 mv dist/updatenotification-updatenotification.js.LICENSE.txt updatenotification-updatenotification.js-LICENSE.txt
 mv dist/settings-vue-settings-admin-delegation.js.LICENSE.txt settings-vue-settings-admin-delegation.js-LICENSE.txt
@@ -483,7 +554,6 @@ mv dist/settings-vue-settings-personal-webauthn.js.LICENSE.txt settings-vue-sett
 mv dist/user_status-dashboard.js.LICENSE.txt user_status-dashboard.js-LICENSE.txt
 mv dist/user_status-menu.js.LICENSE.txt user_status-menu.js-LICENSE.txt
 mv dist/workflowengine-workflowengine.js.LICENSE.txt workflowengine-workflowengine.js-LICENSE.txt
-mv dist/accessibility-accessibilityoca.js.LICENSE.txt accessibility-accessibilityoca.js-LICENSE.txt
 mv dist/comments-comments-tab.js.LICENSE.txt comments-comments-tab.js-LICENSE.txt
 mv dist/core-install.js.LICENSE.txt core-install.js-LICENSE.txt
 mv dist/core-unified-search.js.LICENSE.txt core-unified-search.js-LICENSE.txt
@@ -495,6 +565,10 @@ mv dist/files_trashbin-files_trashbin.js.LICENSE.txt files_trashbin-files_trashb
 mv dist/oauth2-oauth2.js.LICENSE.txt oauth2-oauth2.js-LICENSE.txt
 mv dist/settings-users-8351.js.LICENSE.txt settings-users-8351.js-LICENSE.txt
 mv dist/core-common.js.LICENSE.txt core-common.js-LICENSE.txt
+mv dist/settings-vue-settings-personal-password.js.LICENSE.txt settings-vue-settings-personal-password.js.LICENSE.txt
+mv dist/federatedfilesharing-vue-settings-admin.js.LICENSE.txt federatedfilesharing-vue-settings-admin.js.LICENSE.txt
+mv dist/sharebymail-vue-settings-admin-sharebymail.js.LICENSE.txt sharebymail-vue-settings-admin-sharebymail.js.LICENSE.txt
+mv dist/theming-theming-settings.js.LICENSE.txt theming-theming-settings.js.LICENSE.txt
 
 
 
@@ -620,6 +694,9 @@ fi
 
 
 %changelog
+* Sat Nov 5 2022 Alex Corcoles <alex@corcoles.net> - 25.0.1-1
+- Update to Nextcloud 25.0.1
+
 * Wed Oct 12 2022 Alex Corcoles <alex@corcoles.net> - 24.0.6-1
 - Update to Nextcloud 24.0.6
 - Also incorporate latest updates from Fedora package
