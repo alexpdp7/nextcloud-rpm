@@ -1,5 +1,5 @@
 Name:           nextcloud
-Version:        25.0.1
+Version:        25.0.2
 Release:        1%{?dist}
 Summary:        Private file sync and share server
 License:        AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe
@@ -312,7 +312,9 @@ cp %{SOURCE303} MIGRATION.fedora
 find -wholename "*/composer/LICENSE" -exec mv {} composer-LICENSE \;
 
 # find all remaining using "find -name '*LICENCE*' -name '*LICENSE*' -o -name '*COPYING*' | sort"
-mv 3rdparty/aws/aws-sdk-php/LICENSE.md aws-LICENSE.md
+mv 3rdparty/aws/aws-sdk-php/THIRD-PARTY-LICENSES aws-sdk-php-THIRD-PARTY-LICENSES
+mv 3rdparty/aws/aws-sdk-php/LICENSE aws-sdk-php-LICENSE
+mv 3rdparty/aws/aws-crt-php/LICENSE aws-crt-php-LICENSE
 mv 3rdparty/bantu/ini-get-wrapper/LICENSE bantu-LICENSE
 mv 3rdparty/beberlei/assert/LICENSE beberlei-LICENSE
 mv 3rdparty/brick/math/LICENSE brick-LICENSE
@@ -449,6 +451,7 @@ mv apps/files_pdfviewer/js/pdfjs/web/standard_fonts/LICENSE_LIBERATION standard_
 mv apps/firstrunwizard/js/firstrunwizard-main.js.LICENSE.txt firstrunwizard-main.js-LICENSE.txt
 mv apps/photos/js/photos-vendors-node_modules_nextcloud_vue_dist_Components_ActionButton_js-node_modules_nextcloud_vue-208129.js.LICENSE.txt photos-vendors-node_modules_nextcloud_vue_dist_Components_ActionButton_js-node_modules_nextcloud_vue-208129.js-LICENSE.txt
 mv apps/notifications/js/notifications-settings.js.LICENSE.txt notifications-settings.js-LICENSE.txt
+mv apps/notifications/js/notifications-admin-settings.js.LICENSE.txt notifications-admin-settings.js-LICENSE.txt
 mv apps/suspicious_login/js/settings.js.LICENSE.txt settings.js.LICENSE.txt
 mv apps/suspicious_login/vendor/psr/log/LICENSE psr_log_LICENSE
 mv apps/suspicious_login/vendor/symfony/polyfill-mbstring/LICENSE polyfill-mbstring-LICENSE
@@ -694,6 +697,9 @@ fi
 
 
 %changelog
+* Thu Dec 8 2022 Alex Corcoles <alex@corcoles.net> - 25.0.2-1
+- Update to Nextcloud 25.0.2
+
 * Sat Nov 5 2022 Alex Corcoles <alex@corcoles.net> - 25.0.1-1
 - Update to Nextcloud 25.0.1
 
