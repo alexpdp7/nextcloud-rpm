@@ -1,3 +1,0 @@
-[submodule "nextcloud"]
-	path = nextcloud
-	url = https://github.com/alexpdp7/nextcloud-rpm.git
